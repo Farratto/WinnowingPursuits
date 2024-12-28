@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--
+	Please see the LICENSE.txt file included with this distribution for
+	attribution and copyright information.
+-->
+<root>
+	<windowclass name="charsheet_inventory" merge="join">
+		<script file="campaign/scripts/inventory_search.lua"/>
+
+		<sheetdata>
+			<frame_char name="inventoryframe" merge="replace">
+				<bounds>15,0,-29,-240</bounds>
+			</frame_char>
+			<frame_char name="inventorysearchframe" insertafter="inventoryframe">
+				<bounds>15,-245,-29,45</bounds>
+			</frame_char>
+
+			<buttoncontrol name="inv_search_btn">
+				<anchored to="inventorysearchframe" position="insidetopleft" offset="8,13" width="20" height="20"/>
+				<icon normal="search"/>
+				<tooltip textres="tooltip_search"/>
+			</buttoncontrol>
+			<searchinput name="inv_search_input">
+				<anchored to="inv_search_btn" position="right" offset="5,0" relation="relative" width="150"/>
+				<tabtarget next="inv_search_input" prev="inv_search_btn"/>
+			</searchinput>
+			<searchclear name="inv_search_clear_btn">
+				<anchored to="inv_search_input" position="right" offset="10,0" relation="relative" width="20"/>
+			</searchclear>
+
+			<label_noanch name="filter_lbl">
+				<anchored to="inventorysearchframe" position="insidetopright" offset="180,13"/>
+				<static textres="filter"/>
+				<tooltip textres="tooltip_filter"/>
+			</label_noanch>
+			<filtercombo name="inv_filter_dropdown">
+				<anchored to="filter_lbl" position="right" offset="10,0" width="150"/>
+			</filtercombo>
+		</sheetdata>
+	</windowclass>
+</root>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--
+	Please see the LICENSE.txt file included with this distribution for
+	attribution and copyright information.
+-->
+<root>
+	<windowclass name="ps_inventory_shared_items" merge="join">
+		<script file="campaign/scripts/inventory_search.lua"/>
+		<sheetdata>
+			<list_content_labeled_alternating name="list" merge="join">
+				<anchored to="contentanchor">
+					<bottom parent="bottomanchor" relation="current" offset="-15"/>
+				</anchored>
+			</list_content_labeled_alternating>
+
+			<searchinput name="inv_search_input">
+				<anchored to="contentanchor" width="200">
+					<left offset="-1"/>
+					<bottom parent="bottomanchor" offset="-12"/>
+				</anchored>
+				<tabtarget next="inv_search_input" prev="list"/>
+			</searchinput>
+			<buttoncontrol name="inv_search_clear_btn">
+				<anchored to="inv_search_input" position="right" offset="5,0" relation="relative" width="20"/>
+				<icon normal="button_clear" pressed="button_clear_down"/>
+				<invisible/>
+				<tooltip textres="tooltip_clear"/>
+			</buttoncontrol>
+
+			<filtercombo name="inv_filter_dropdown">
+				<anchored width="150">
+					<bottom parent="bottomanchor" offset="-12" />
+					<right offset="-12" />
+				</anchored>
+				<listmaxsize>9</listmaxsize>
+			</filtercombo>
+			<label_noanch name="filter_lbl">
+				<anchored to="inv_filter_dropdown" position="left" offset="5,0" />
+				<static textres="filter"/>
+				<tooltip textres="tooltip_filter"/>
+			</label_noanch>
+		</sheetdata>
+	</windowclass>
+
+	<windowclass name="ps_inventory_party_items" merge="join">
+		<script file="campaign/scripts/inventory_search.lua"/>
+
+		<sheetdata>
+			<list_content_labeled_alternating name="list" merge="join">
+				<anchored to="contentanchor">
+					<bottom parent="bottomanchor" relation="current" offset="-15"/>
+				</anchored>
+			</list_content_labeled_alternating>
+
+			<searchinput name="inv_search_input">
+				<anchored to="contentanchor" width="200">
+					<left offset="-1"/>
+					<bottom parent="bottomanchor" offset="-12"/>
+				</anchored>
+				<tabtarget next="inv_search_input" prev="list"/>
+			</searchinput>
+			<buttoncontrol name="inv_search_clear_btn">
+				<anchored to="inv_search_input" position="right" offset="10,0" relation="relative" width="20"/>
+				<icon normal="button_clear" pressed="button_clear_down"/>
+				<invisible/>
+				<tooltip textres="tooltip_clear"/>
+			</buttoncontrol>
+
+			<filtercombo name="inv_filter_dropdown">
+				<anchored width="150">
+					<bottom parent="bottomanchor" offset="-12" />
+					<right offset="-15" />
+				</anchored>
+				<listmaxsize>11</listmaxsize>
+			</filtercombo>
+			<label_noanch name="filter_lbl">
+				<anchored to="inv_filter_dropdown" position="left" offset="5,0" />
+				<static textres="filter"/>
+				<tooltip textres="tooltip_filter"/>
+			</label_noanch>
+		</sheetdata>
+	</windowclass>
+</root>

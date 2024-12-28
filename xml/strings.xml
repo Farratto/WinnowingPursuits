@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--
+	Please see the LICENSE.txt file included with this distribution for
+	attribution and copyright information.
+-->
+<root>
+	<string name="search">Search</string>
+	<string name="search_logs">Search logs</string>
+	<string name="tooltip_search">Enter an item name to search for, then click here or press Enter</string>
+	<string name="tooltip_search_actions">Enter a spell or action name, then click here or press Enter</string>
+	<string name="tooltip_clear">Clear search</string>
+
+	<string name="filter">Filter</string>
+	<string name="tooltip_filter">Filter based upon properties of inventory items</string>
+	<string name="tooltip_filter_actions">Filter weapons, spells, and other actions</string>
+
+	<string name="filteropt_none">None</string>
+	<string name="filteropt_armor">Armor &amp; Shields</string>
+	<string name="filteropt_carried">Carried</string>
+	<string name="filteropt_equipped">Equipped</string>
+	<string name="filteropt_gear">Adventuring Gear</string>
+	<string name="filteropt_goods">Goods and Services</string>
+	<string name="filteropt_id">Identified</string>
+	<string name="filteropt_magical">Magical</string>
+	<string name="filteropt_not_carried">Not Carried</string>
+	<string name="filteropt_not_id">Not Identified</string>
+	<string name="filteropt_potions">Potions</string>
+	<string name="filteropt_ritual">Ritual</string>
+	<string name="filteropt_schools_label">Schools</string>
+	<string name="filteropt_school_prefix">School - </string>
+	<string name="filteropt_school_none">&#171; School - None &#187;</string>
+	<string name="filteropt_scrolls">Spell Scrolls</string>
+	<string name="filteropt_spells">Spells</string>
+	<string name="filteropt_spells_con">Spells - Concentration</string>
+	<string name="filteropt_spells_notcon">Spells - Not Concentration</string>
+	<string name="filteropt_spells_ritual">Spells - Ritual</string>
+	<string name="filteropt_weapons">Weapons</string>
+	<string name="filteropt_armorweapons">Armor and Weapons</string>
+	<string name="filteropt_attunement">Requires Attunement</string>
+	<string name="filteropt_valuables">Valuables</string>
+
+	<string name="option_header_IF">Inventory Filter Options</string>
+	<string name="option_header_AF">Action Filter Options</string>
+	<string name="option_label_spellschool">Power Schools</string>
+</root>

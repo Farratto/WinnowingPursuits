@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--
+	Please see the LICENSE.txt file included with this distribution for
+	attribution and copyright information.
+-->
+<root>
+	<windowclass name="charsheet_actions" merge="join">
+		<script file="campaign/scripts/action_search.lua"/>
+
+		<sheetdata>
+			<area_content_framed_groupbox_bottom name="area_controls">
+				<anchored height="45" />
+			</area_content_framed_groupbox_bottom>
+
+			<buttoncontrol name="actions_search_btn">
+				<anchored to="area_controls" position="insidebottomleft" width="20" height="20"/>
+				<icon normal="search"/>
+				<tooltip textres="tooltip_search_actions"/>
+			</buttoncontrol>
+			<searchinput name="actions_search_input">
+				<anchored to="actions_search_btn" position="right" offset="5,0" relation="relative" width="100"/>
+				<tabtarget next="actions_search_input" prev="actions_search_btn"/>
+			</searchinput>
+			<searchclear name="actions_search_clear_btn">
+				<anchored to="actions_search_input" position="right" offset="10,0" relation="relative" width="20"/>
+			</searchclear>
+
+			<filtercombo name="actions_filter_dropdown">
+				<anchored to="area_controls" position="insidebottomright" width="165"/>
+			</filtercombo>
+			<label_noanch name="filter_lbl">
+				<anchored to="actions_filter_dropdown" position="left" offset="10,0"/>
+				<static textres="filter"/>
+				<tooltip textres="tooltip_filter_actions"/>
+			</label_noanch>
+		</sheetdata>
+	</windowclass>
+
+	<!-- FloatingTabs compatibility -->
+	<windowclass name="charsheet_actionsft" merge="join">
+		<script file="campaign/scripts/action_search.lua"/>
+
+		<sheetdata>
+			<area_content_framed_groupbox_bottom name="area_controls">
+				<anchored height="45" />
+			</area_content_framed_groupbox_bottom>
+
+			<buttoncontrol name="actions_search_btn">
+				<anchored to="area_controls" position="insidebottomleft" width="20" height="20"/>
+				<icon normal="search"/>
+				<tooltip textres="tooltip_search_actions"/>
+			</buttoncontrol>
+			<searchinput name="actions_search_input">
+				<anchored to="actions_search_btn" position="right" offset="5,0" relation="relative" width="100"/>
+				<tabtarget next="actions_search_input" prev="actions_search_btn"/>
+			</searchinput>
+			<searchclear name="actions_search_clear_btn">
+				<anchored to="actions_search_input" position="right" offset="10,0" relation="relative" width="20"/>
+			</searchclear>
+
+			<filtercombo name="actions_filter_dropdown">
+				<anchored to="area_controls" position="insidebottomright" width="165"/>
+			</filtercombo>
+			<label_noanch name="filter_lbl">
+				<anchored to="actions_filter_dropdown" position="left" offset="10,0"/>
+				<static textres="filter"/>
+				<tooltip textres="tooltip_filter_actions"/>
+			</label_noanch>
+		</sheetdata>
+	</windowclass>
+</root>

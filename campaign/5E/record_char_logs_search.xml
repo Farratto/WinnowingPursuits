@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--
+	Please see the LICENSE.txt file included with this distribution for
+	attribution and copyright information.
+-->
+<root>
+	<windowclass name="charsheet_logs" merge="join">
+		<script file="campaign/scripts/logs_search.lua"/>
+		<sheetdata>
+			<searchinput name="logs_search_input">
+				<empty>
+					<textres>search_logs</textres>
+				</empty>
+				<anchored to="area_controls" position="insideleft" width="150" height="20"/>
+				<tabtarget next="logs_search_input" prev="logs_search_clear_btn"/>
+			</searchinput>
+			<searchclear name="logs_search_clear_btn">
+				<anchored to="logs_search_input" position="right" offset="10,0" relation="relative" width="20"/>
+			</searchclear>
+		</sheetdata>
+	</windowclass>
+
+	<!-- Friend Zone compatibility -->
+	<windowclass name="charsheet_notes_and_logs" merge="join">
+		<script file="campaign/scripts/logs_search.lua"/>
+		<sheetdata>
+			<searchinput name="logs_search_input">
+				<empty>
+					<textres>search_logs</textres>
+				</empty>
+				<anchored to="area_controls" position="insideleft" width="150" height="20"/>
+				<tabtarget next="logs_search_input" prev="logs_search_clear_btn"/>
+			</searchinput>
+			<searchclear name="logs_search_clear_btn">
+				<anchored to="logs_search_input" position="right" offset="10,0" relation="relative" width="20"/>
+			</searchclear>
+		</sheetdata>
+	</windowclass>
+</root>

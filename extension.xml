@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--
+	Please see the LICENSE.txt file included with this distribution for
+	attribution and copyright information.
+-->
+<root>
+	<announcement font="emotefont" icon="WP_tiny" text="Winnowing Pursuits ~dev_version~"/>
+	<properties>
+		<name>Feature: Winnowing Pursuits</name>
+		<version>~dev_version~</version>
+		<author>anathemort</author>
+		<description>Provides search and filter controls for actions, logs, inventory, and party inventory</description>
+		<ruleset>
+			<name>3.5E</name>
+		</ruleset>
+		<ruleset>
+			<name>4E</name>
+		</ruleset>
+		<ruleset>
+			<name>5E</name>
+		</ruleset>
+		<ruleset>
+			<name>PFRPG</name>
+		</ruleset>
+		<ruleset>
+			<name>PFRPG2</name>
+		</ruleset>
+		<!-- FloatingTabs (50) compatibility -->
+		<!-- Friend Zone (150) compatibility -->
+		<loadorder>151</loadorder>
+	</properties>
+	<base>
+		<includefile source="xml/scripts.xml"/>
+		<icon name="WP_tiny" file="graphics/icons/WP_tiny.webp"/>
+		<script name="PowerUpWP">
+			function onInit()
+				if PowerUp then
+					PowerUp.registerExtension("Winnowing Pursuits", "~dev_version~", {
+						['message'] = "~dev_version~\~update_notes~"
+					});
+				end
+			end
+		</script>
+	</base>
+</root>

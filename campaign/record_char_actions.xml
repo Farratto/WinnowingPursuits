@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--
+	Please see the LICENSE.txt file included with this distribution for
+	attribution and copyright information.
+-->
+<root>
+	<windowclass name="charsheet_actions" merge="join">
+		<script file="campaign/scripts/action_search.lua"/>
+
+		<sheetdata>
+			<frame_char name="actionframe" merge="replace">
+				<bounds>1,0,-1,-47</bounds>
+			</frame_char>
+			<frame_char name="actionssearchframe" insertafter="actionframe">
+				<bounds>1,-52,-1,45</bounds>
+			</frame_char>
+
+			<buttoncontrol name="actions_search_btn">
+				<anchored to="actionssearchframe" position="insidetopleft" offset="8,13" width="20" height="20"/>
+				<icon normal="search"/>
+				<tooltip textres="tooltip_search_actions"/>
+			</buttoncontrol>
+			<searchinput name="actions_search_input">
+				<anchored to="actions_search_btn" position="right" offset="5,0" relation="relative" width="150"/>
+				<tabtarget next="actions_search_input" prev="actions_search_btn"/>
+			</searchinput>
+
+			<searchclear name="actions_search_clear_btn">
+				<anchored to="actions_search_input" position="right" offset="10,0" relation="relative" width="20"/>
+			</searchclear>
+			<label_noanch name="filter_lbl">
+				<anchored to="actionssearchframe" position="insidetopright" offset="195,13"/>
+				<static textres="filter"/>
+				<tooltip textres="tooltip_filter_actions"/>
+			</label_noanch>
+
+			<filtercombo name="actions_filter_dropdown">
+				<anchored to="filter_lbl" position="right" offset="10,0" width="165"/>
+			</filtercombo>
+		</sheetdata>
+	</windowclass>
+</root>
