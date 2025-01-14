@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--
+	Please see the LICENSE.txt file included with this distribution for
+	attribution and copyright information.
+-->
+<root>
+	<windowclass name="sub_ct_controls_host" merge="join">
+		<script file="ct/scripts/ct_host_WP.lua"/>
+		<sheetdata>
+			<searchinput name="ct_search_input">
+				<anchored to="leftanchor" width="120" >
+					<top offset="3" />
+					<left relation="relative" offset="5" postoffset="4" />
+				</anchored>
+			</searchinput>
+			<searchclear name="ct_search_clear_btn">
+				<anchored to="leftanchor" width="20" height="20">
+					<top />
+					<left parent="leftanchor" relation="relative" offset="0" postoffset="0" />
+				</anchored>
+			</searchclear>
+		</sheetdata>
+	</windowclass>
+
+	<windowclass name="combattracker_host" merge="join">
+		<sheetdata>
+			<ct_combat_timer_host name="combat_timer" merge="delete" />
+		</sheetdata>
+	</windowclass>
+
+	<template name="combat_timer_new">
+		<subwindow name="combat_timer" >
+			<class>ct_combat_timer_host</class>
+			<anchored to="leftanchor" width="99" height="25" >
+				<top offset="-3" />
+				<left relation="relative" offset="3" postoffset="2" />
+			</anchored>
+			<activate />
+			<fastinit />
+		</subwindow>
+	</template>
+</root>

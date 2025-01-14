@@ -7,6 +7,7 @@ This extension adds search and filter controls to
 * character actions
 * party inventory
 * log tab
+* combat tracker on host
 
 ### Installation
 
@@ -28,6 +29,8 @@ Extensions supported:
 * Floating Tabs
 * Extraplanar Containers
 * 3.5E/PFRPG Advanced Charsheet
+* Combat Groups
+* Combat Timer
 
 ### Attribution
 
@@ -38,6 +41,7 @@ SmiteWorks owns rights to code sections copied from their rulesets by permission
 
 ### Change Log
 
+* v2.5.0: Added search filter to CT and support for Combat Groups and Combat Timer
 * v2.4.0: Farratto takes over support. Updated for compatibility of latest version of FGU. Added inventory filters. Added search and filter capabilities to top and bottom of party sheet.
 * v2.3.2: Updated for compatibility with FGU 4.4.8
 * v2.3.1: Fixed 4E Powers interaction

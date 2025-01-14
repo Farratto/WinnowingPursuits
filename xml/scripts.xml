@@ -26,4 +26,7 @@
 
 	<!-- party sheet -->
 	<includefile source="ps/ps_inventory_search.xml"/>
+
+	<!-- combat tracker -->
+	<includefile source="ct/ct_host_WP.xml"/>
 </root>

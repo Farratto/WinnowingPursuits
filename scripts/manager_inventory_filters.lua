@@ -3,10 +3,13 @@
 
 -- luacheck: globals isValuable setValueTypes findFilterOption setFilterOptionListener removeFilterOptionListener
 -- luacheck: globals onOptionChanged buildPartyInventoryWP tValueTypes fbuildPartyInventory filterOptions
+-- luacheck: globals _bAllowBuildPartyInventory hasExtension
 
 tValueTypes = {};
 fbuildPartyInventory = '';
 filterOptions = {};
+_bAllowBuildPartyInventory = false;
+local tExtensions = {};
 
 function onInit()
 	local ruleset = User.getRulesetName();
@@ -186,6 +189,15 @@ function onInit()
 			OptionsManager.registerCallback(v.sOptKey, onOptionChanged);
 		end
 	end
+
+	if Session.IsHost then
+		_bAllowBuildPartyInventory = true;
+		PartyLootManager.populate();
+	end
+end
+
+function onTabletopInit()
+	hasExtension();
 end
 
 function isValuable(nodeItem)
@@ -255,6 +267,8 @@ function onOptionChanged(sKey)
 end
 
 function buildPartyInventoryWP()
+	if not _bAllowBuildPartyInventory then return false end
+
 	DB.deleteChildren("partysheet.inventorylist");
 
 	-- Determine members of party
@@ -301,4 +315,16 @@ function buildPartyInventoryWP()
 		end
 		DB.setValue(vGroupItem, "carriedby", "string", table.concat(aCarriedBy, ", "));
 	end
+	_bAllowBuildPartyInventory = false;
+end
+
+function hasExtension(sExtName)
+	if not tExtensions[1] then tExtensions = Extension.getExtensions() end
+	if not sExtName then return end
+	for _,sExtension in ipairs(tExtensions) do
+		if sExtension == sExtName then
+			return true;
+		end
+	end
+	return false;
 end

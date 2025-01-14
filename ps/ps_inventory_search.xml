@@ -80,4 +80,28 @@
 			</label_noanch>
 		</sheetdata>
 	</windowclass>
+
+	<windowclass name="ps_inventory" merge="join" >
+		<script merge="join" >
+			function onInit()
+				if not Session.IsHost then
+					OptionsManager.registerCallback("PSIN", self.onOptionChanged);
+				end
+				if super and super.onOptionChanged then super.onOptionChanged() end
+			end
+		</script>
+	</windowclass>
+
+	<windowclass name="ps_inventory_party_header" merge="join" >
+		<sheetdata>
+			<button_refresh name="button_rebuild" merge="join" >
+				<script>
+					function onButtonPress()
+						InventoryFiltersManager._bAllowBuildPartyInventory = true;
+						if super and super.onButtonPress then super.onButtonPress() end
+					end
+				</script>
+			</button_refresh>
+		</sheetdata>
+	</windowclass>
 </root>
