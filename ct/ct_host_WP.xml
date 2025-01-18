@@ -4,7 +4,7 @@
 	attribution and copyright information.
 -->
 <root>
-	<windowclass name="sub_ct_controls_host" merge="join">
+	<windowclass name="sub_ct_controls_host" merge="join" ruleset="3.5E|4E|5E|PFRPG">
 		<script file="ct/scripts/ct_host_WP.lua"/>
 		<sheetdata>
 			<searchinput name="ct_search_input">
@@ -22,13 +22,13 @@
 		</sheetdata>
 	</windowclass>
 
-	<windowclass name="combattracker_host" merge="join">
+	<windowclass name="combattracker_host" merge="join" ruleset="3.5E|4E|5E|PFRPG">
 		<sheetdata>
 			<ct_combat_timer_host name="combat_timer" merge="delete" />
 		</sheetdata>
 	</windowclass>
 
-	<template name="combat_timer_new">
+	<template name="combat_timer_new" ruleset="3.5E|4E|5E|PFRPG">
 		<subwindow name="combat_timer" >
 			<class>ct_combat_timer_host</class>
 			<anchored to="leftanchor" width="99" height="25" >
@@ -39,4 +39,28 @@
 			<fastinit />
 		</subwindow>
 	</template>
+
+	<windowclass name="sub_ct_header_host" merge="join" ruleset="PFRPG2" >
+		<script file="ct/scripts/ct_host_WP.lua"/>
+		<sheetdata>
+			<spacer_ct_header_right name="spacer_buttons_header_add">
+				<anchored width="20" />
+			</spacer_ct_header_right>
+
+			<searchinput name="ct_search_input" insertbefore="label_current">
+				<anchored to="labelrightanchor" position="insidetopright" width="115">
+					<top offset="2" />
+					<right anchor="left" relation="relative" offset="-5" />
+				</anchored>
+			</searchinput>
+			<searchclear name="ct_search_clear_btn" insertbefore="label_current">
+				<anchored to="ct_search_input" width="20" height="20">
+					<top offset="-3" />
+					<left anchor="right" offset="5" />
+				</anchored>
+			</searchclear>
+
+			<spacer_ct_header_buttons_host name="spacer_buttons_header" merge="delete" />
+		</sheetdata>
+	</windowclass>
 </root>
