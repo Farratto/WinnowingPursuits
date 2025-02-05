@@ -41,6 +41,8 @@ SmiteWorks owns rights to code sections copied from their rulesets by permission
 
 ### Change Log
 
+* v2.5.2: Renewed support for Floating Tabs extension
+* v2.5.1: Moved CT Search field for better fit for RFPG2
 * v2.5.1: Moved CT Search field for better fit for RFPG2
 * v2.5.0: Added search filter to CT and support for Combat Groups and Combat Timer
 * v2.4.0: Farratto takes over support. Updated for compatibility of latest version of FGU. Added inventory filters. Added search and filter capabilities to top and bottom of party sheet.

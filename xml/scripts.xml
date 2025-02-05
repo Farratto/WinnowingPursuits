@@ -7,9 +7,6 @@
 	<includefile source="xml/strings.xml"/>
 	<includefile source="xml/templates.xml"/>
 
-	<script name="ActionsFiltersManager" file="scripts/manager_actions_filters.lua"/>
-	<script name="InventoryFiltersManager" file="scripts/manager_inventory_filters.lua"/>
-
 	<!-- inventory -->
 	<includefile ruleset="3.5E|4E|PFRPG" source="campaign/record_char_inventory_search.xml"/>
 	<includefile ruleset="PFRPG2" source="campaign/PFRPG2/record_char_inventory_search.xml"/>

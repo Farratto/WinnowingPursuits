@@ -6,7 +6,6 @@
 <root>
 	<windowclass name="charsheet_inventory" merge="join">
 		<script file="campaign/scripts/inventory_search.lua"/>
-
 		<sheetdata>
 			<frame_char name="inventoryframe" merge="replace">
 				<bounds>15,0,-29,-240</bounds>
@@ -16,7 +15,8 @@
 			</frame_char>
 
 			<buttoncontrol name="inv_search_btn">
-				<anchored to="inventorysearchframe" position="insidetopleft" offset="8,13" width="20" height="20"/>
+<!--				<anchored to="inventorysearchframe" position="insidetopleft" offset="8,13" width="20" height="20"/> -->
+				<anchored to="inventorysearchframe" position="insidetopleft" offset="8,13" width="20" />
 				<icon normal="search"/>
 				<tooltip textres="tooltip_search"/>
 			</buttoncontrol>

@@ -78,7 +78,12 @@ function applySearchAndFilter()
 	local ruleset = User.getRulesetName();
 
 	if ruleset == "5E" then
-		local vWindow = content.subwindow.actions.subwindow;
+		local vWindow;
+		if content then
+			vWindow = content.subwindow.actions.subwindow;
+		else --FloatingTabs compatibility
+			vWindow = contents.subwindow.actions.subwindow; --luacheck: ignore 85
+		end
 		local nodeSpell;
 
 		vWindow.updateUses();
@@ -185,7 +190,11 @@ function findWeaponList()
 	local list;
 
 	if ruleset == "5E" then
-		list = content.subwindow.weapons;
+		if content then
+			list = content.subwindow.weapons;
+		else
+			list = contents.subwindow.weapons;
+		end
 	elseif ActionsFiltersManager.bHasExtensionAdvancedCharsheet then
 		if subweapons.subwindow.weapons.subwindow ~= nil then
 			list = subweapons.subwindow.weapons.subwindow.weaponlist;

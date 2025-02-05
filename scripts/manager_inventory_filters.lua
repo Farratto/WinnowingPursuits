@@ -231,7 +231,6 @@ end
 function findFilterOption(sLabelRes, sLabelValue, sOptKey)
 	local option;
 
-	--for _, v in ipairs(InventoryFiltersManager.filterOptions) do
 	for _, v in ipairs(filterOptions) do
 		if sLabelRes ~= nil and sLabelRes == v.sLabelRes then
 			option = v;

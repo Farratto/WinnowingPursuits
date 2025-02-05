@@ -6,10 +6,9 @@
 <root>
 	<windowclass name="charsheet_inventory" merge="join">
 		<script file="campaign/scripts/inventory_search.lua"/>
-
 		<sheetdata>
 			<buttoncontrol name="inv_search_btn">
-				<anchored to="area_controls" position="insideleft" offset="-10" width="20" height="20"/>
+				<anchored to="area_controls" position="insideleft" offset="-10" width="20" />
 				<icon normal="search"/>
 				<tooltip textres="tooltip_search"/>
 			</buttoncontrol>
@@ -36,10 +35,9 @@
 	<!-- FloatingTabs compatibility -->
 	<windowclass name="charsheet_inventoryft" merge="join">
 		<script file="campaign/scripts/inventory_search.lua"/>
-
 		<sheetdata>
 			<buttoncontrol name="inv_search_btn">
-				<anchored to="area_controls" position="insideleft" offset="-10" width="20" height="20"/>
+				<anchored position="insidebottomleft" offset="10,20" width="20" height="20"/>
 				<icon normal="search"/>
 				<tooltip textres="tooltip_search"/>
 			</buttoncontrol>
@@ -53,7 +51,7 @@
 			</searchclear>
 
 			<filtercombo name="inv_filter_dropdown">
-				<anchored to="sheet_iedit" position="left" offset="10,0" width="150"/>
+				<anchored to="button_ftsort" position="left" offset="10,0" width="150"/>
 			</filtercombo>
 			<label_noanch name="filter_lbl">
 				<anchored to="inv_filter_dropdown" position="left" offset="10,0"/>

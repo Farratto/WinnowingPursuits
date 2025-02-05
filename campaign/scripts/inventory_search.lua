@@ -57,7 +57,11 @@ function findInventoryList()
 	local invlist;
 
 	if ruleset == "5E" then
-		invlist = content.subwindow.items.subwindow.list;
+		if content then
+			invlist = content.subwindow.items.subwindow.list;
+		else --FloatingTabs compatibility
+			invlist = contents.subwindow.items.subwindow.list; --luacheck: ignore 85
+		end
 	else
 		invlist = inventorylist;
 	end

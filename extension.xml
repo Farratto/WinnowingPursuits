@@ -32,6 +32,8 @@
 	<base>
 		<includefile source="xml/scripts.xml"/>
 		<icon name="WP_tiny" file="graphics/icons/WP_tiny.webp"/>
+		<script name="ActionsFiltersManager" file="scripts/manager_actions_filters.lua"/>
+		<script name="InventoryFiltersManager" file="scripts/manager_inventory_filters.lua"/>
 		<script name="PowerUpWP">
 			function onInit()
 				if PowerUp then

@@ -41,12 +41,17 @@
 		<script file="campaign/scripts/action_search.lua"/>
 
 		<sheetdata>
-			<area_content_framed_groupbox_bottom name="area_controls">
-				<anchored height="45" />
-			</area_content_framed_groupbox_bottom>
+			<subwindow name="contents">
+				<anchored>
+					<bottom offset="-75"/>
+				</anchored>
+			</subwindow>
 
 			<buttoncontrol name="actions_search_btn">
-				<anchored to="area_controls" position="insidebottomleft" width="20" height="20"/>
+				<anchored to="powermode_label" width="20" height="20">
+					<bottom anchor="top" offset="-5" />
+					<left anchor="left" offset="-5" />
+				</anchored>
 				<icon normal="search"/>
 				<tooltip textres="tooltip_search_actions"/>
 			</buttoncontrol>
@@ -59,7 +64,10 @@
 			</searchclear>
 
 			<filtercombo name="actions_filter_dropdown">
-				<anchored to="area_controls" position="insidebottomright" width="165"/>
+				<anchored width="165">
+					<bottom parent="actions_search_input" anchor="bottom" />
+					<right parent="actions_iedit" anchor="right" />
+				</anchored>
 			</filtercombo>
 			<label_noanch name="filter_lbl">
 				<anchored to="actions_filter_dropdown" position="left" offset="10,0"/>

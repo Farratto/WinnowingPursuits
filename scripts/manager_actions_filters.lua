@@ -39,7 +39,6 @@ end
 function findFilterOption(nodeChar, sLabelRes, sLabelValue)
 	local option;
 
-	--for _, v in ipairs(ActionsFiltersManager.getFilterOptions(nodeChar)) do
 	for _, v in ipairs(getFilterOptions(nodeChar)) do
 		if sLabelRes ~= nil and sLabelRes == v.sLabelRes then
 			option = v;
