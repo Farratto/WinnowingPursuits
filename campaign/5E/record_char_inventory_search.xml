@@ -7,8 +7,18 @@
 	<windowclass name="charsheet_inventory" merge="join">
 		<script file="campaign/scripts/inventory_search.lua"/>
 		<sheetdata>
+			<sub_content_scroll name="content">
+				<anchored>
+					<bottom parent="bottomanchor" relation="current" offset="-60" />
+				</anchored>
+			</sub_content_scroll>
+			<area_content_framed_groupbox_bottom name="cs_inv_gb_bot">
+				<anchored height="20" />
+			</area_content_framed_groupbox_bottom>
+
 			<buttoncontrol name="inv_search_btn">
-				<anchored to="area_controls" position="insideleft" offset="-10" width="20" />
+<!--				<anchored to="area_controls" position="insideleft" offset="-10" width="20" /> -->
+				<anchored to="cs_inv_gb_bot" position="insideleft" offset="-10" width="20" />
 				<icon normal="search"/>
 				<tooltip textres="tooltip_search"/>
 			</buttoncontrol>
@@ -22,7 +32,8 @@
 			</searchclear>
 
 			<filtercombo name="inv_filter_dropdown">
-				<anchored to="sheet_iedit" position="left" offset="10,0" width="150"/>
+<!--				<anchored to="sheet_iedit" position="left" offset="10,0" width="150"/> -->
+				<anchored to="cs_inv_gb_bot" position="insideright" offset="10,0" width="150"/>
 			</filtercombo>
 			<label_noanch name="filter_lbl">
 				<anchored to="inv_filter_dropdown" position="left" offset="10,0"/>

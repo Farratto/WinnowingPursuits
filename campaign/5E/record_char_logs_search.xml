@@ -7,11 +7,21 @@
 	<windowclass name="charsheet_logs" merge="join">
 		<script file="campaign/scripts/logs_search.lua"/>
 		<sheetdata>
+			<sub_content_scroll name="content">
+				<anchored>
+					<bottom parent="bottomanchor" relation="current" offset="-60" />
+				</anchored>
+			</sub_content_scroll>
+			<area_content_framed_groupbox_bottom name="cs_inv_gb_bot">
+				<anchored height="20" />
+			</area_content_framed_groupbox_bottom>
+
 			<searchinput name="logs_search_input">
 				<empty>
 					<textres>search_logs</textres>
 				</empty>
-				<anchored to="area_controls" position="insideleft" width="150" height="20"/>
+<!--				<anchored to="area_controls" position="insideleft" width="150" height="20"/> -->
+				<anchored to="cs_inv_gb_bot" position="insideleft" width="150" height="20"/>
 				<tabtarget next="logs_search_input" prev="logs_search_clear_btn"/>
 			</searchinput>
 			<searchclear name="logs_search_clear_btn">
@@ -24,11 +34,21 @@
 	<windowclass name="charsheet_notes_and_logs" merge="join">
 		<script file="campaign/scripts/logs_search.lua"/>
 		<sheetdata>
+			<sub_content_scroll name="content">
+				<anchored>
+					<bottom parent="bottomanchor" relation="current" offset="-60" />
+				</anchored>
+			</sub_content_scroll>
+			<area_content_framed_groupbox_bottom name="cs_inv_gb_bot">
+				<anchored height="20" />
+			</area_content_framed_groupbox_bottom>
+
 			<searchinput name="logs_search_input">
 				<empty>
 					<textres>search_logs</textres>
 				</empty>
-				<anchored to="area_controls" position="insideleft" width="150" height="20"/>
+<!--				<anchored to="area_controls" position="insideleft" width="150" height="20"/> -->
+				<anchored to="cs_inv_gb_bot" position="insideleft" width="150" height="20"/>
 				<tabtarget next="logs_search_input" prev="logs_search_clear_btn"/>
 			</searchinput>
 			<searchclear name="logs_search_clear_btn">

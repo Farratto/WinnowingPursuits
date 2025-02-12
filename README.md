@@ -41,6 +41,7 @@ SmiteWorks owns rights to code sections copied from their rulesets by permission
 
 ### Change Log
 
+* v2.5.3: Rare bug with WP checking action uses.  FIXED
 * v2.5.2: Renewed support for Floating Tabs extension
 * v2.5.1: Moved CT Search field for better fit for RFPG2
 * v2.5.1: Moved CT Search field for better fit for RFPG2

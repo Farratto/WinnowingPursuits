@@ -10,12 +10,10 @@ local fFilter;
 local fSearch;
 
 function onInit()
-	if super and super.onInit then
-		super.onInit();
-	end
+	if super and super.onInit then super.onInit() end
 
 	actions_search_btn.onButtonPress = onSearchEnter;
-	actions_search_input.setValue("");
+	actions_search_input.setValue('');
 	actions_search_input.onEnter = onSearchEnter;
 	actions_search_clear_btn.onButtonPress = onSearchClear;
 
@@ -82,11 +80,12 @@ function applySearchAndFilter()
 		if content then
 			vWindow = content.subwindow.actions.subwindow;
 		else --FloatingTabs compatibility
-			vWindow = contents.subwindow.actions.subwindow; --luacheck: ignore 85
+			vWindow = contents.subwindow.actions.subwindow; --luacheck: ignore 85 143
 		end
 		local nodeSpell;
 
-		vWindow.updateUses();
+		--vWindow.updateUses();
+		vWindow.updatePowerGroups();
 
 		for _, vPowerPage in pairs(vWindow.powers.getWindows()) do
 			if vPowerPage.getClass() ~= "power_group_header" and vPowerPage.getFilter() == true then
@@ -193,7 +192,7 @@ function findWeaponList()
 		if content then
 			list = content.subwindow.weapons;
 		else
-			list = contents.subwindow.weapons;
+			list = contents.subwindow.weapons; --luacheck: ignore 143
 		end
 	elseif ActionsFiltersManager.bHasExtensionAdvancedCharsheet then
 		if subweapons.subwindow.weapons.subwindow ~= nil then

@@ -60,7 +60,7 @@ function findInventoryList()
 		if content then
 			invlist = content.subwindow.items.subwindow.list;
 		else --FloatingTabs compatibility
-			invlist = contents.subwindow.items.subwindow.list; --luacheck: ignore 85
+			invlist = contents.subwindow.items.subwindow.list; --luacheck: ignore 85 143
 		end
 	else
 		invlist = inventorylist;
