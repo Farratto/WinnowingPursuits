@@ -1,10 +1,10 @@
 -- Please see the LICENSE.txt file included with this distribution for
 -- attribution and copyright information.
 
--- luacheck: globals applySearchAndFilter findWeaponList initFilterDropdown onFilterFieldChanged refreshFilters
+-- luacheck: globals applySearchAndFilter findWeaponList initFilterDropdown onFilterFieldChanged
 -- luacheck: globals onFilterOptionChanged onFilterSelect onSearchClear onSearchEnter onSpellModeChange
--- luacheck: globals actions_search_btn actions_search_input actions_search_clear_btn actions_filter_dropdown
--- luacheck: globals subspells subweapons filter_lbl
+-- luacheck: globals actions_search_btn actions_search_input actions_search_clear_btn
+-- luacheck: globals subspells subweapons filter_lbl actions_filter_dropdown refreshFilters
 
 local fFilter;
 local fSearch;
@@ -101,6 +101,18 @@ function applySearchAndFilter()
 		end
 
 		vWindow.powers.applyFilter();
+
+		local searchInput = StringManager.trim(actions_search_input.getValue()):lower();
+		if searchInput == 'use object' then searchInput = 'use_object' end
+		for _,control in pairs(content.subwindow.sub_generic_actions.subwindow.getControls()) do
+			if string.match(string.lower(control.getName()), searchInput) then
+				content.subwindow.generic_actions.setFont("subwindowsmalltitle");
+				content.subwindow.sub_generic_actions.setVisible(true);
+				control.setVisible(true);
+			else
+				control.setVisible(false);
+			end
+		end
 	elseif ruleset == "4E" then
 		local list = powerlist;
 		local fOriginalFilter = list.onFilter;
@@ -257,6 +269,10 @@ function onSearchClear()
 
 	actions_search_input.setValue("");
 	actions_search_clear_btn.setVisible(false);
+
+	for _,control in pairs(content.subwindow.sub_generic_actions.subwindow.getControls()) do
+		control.setVisible(true);
+	end
 end
 
 function onSearchEnter()

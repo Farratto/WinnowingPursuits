@@ -20,8 +20,8 @@
 				<empty>
 					<textres>search_logs</textres>
 				</empty>
-<!--				<anchored to="area_controls" position="insideleft" width="150" height="20"/> -->
 				<anchored to="cs_inv_gb_bot" position="insideleft" width="150" height="20"/>
+<!--				<anchored to="cs_inv_gb_bot" position="insideleft" width="150" /> -->
 				<tabtarget next="logs_search_input" prev="logs_search_clear_btn"/>
 			</searchinput>
 			<searchclear name="logs_search_clear_btn">
