@@ -39,7 +39,6 @@
 	<!-- FloatingTabs compatibility -->
 	<windowclass name="charsheet_actionsft" merge="join">
 		<script file="campaign/scripts/action_search.lua"/>
-
 		<sheetdata>
 			<subwindow name="contents">
 				<anchored>

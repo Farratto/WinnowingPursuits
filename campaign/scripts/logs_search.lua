@@ -1,22 +1,41 @@
 -- Please see the LICENSE.txt file included with this distribution for
 -- attribution and copyright information.
 
--- luacheck: globals applySearch findLogsList onSearchClear onSearchEnter logs_search_input logs_search_clear_btn
+-- luacheck: globals applySearch findLogsList onSearchClear onSearchEnter logs_search_input
+-- luacheck: globals logs_search_clear_btn
 
 local fSearch;
+local bPets;
 
 function onInit()
-	if super and super.onInit then
-		super.onInit();
+	if super and super.onInit then super.onInit() end
+
+	if replace and replace.subwindow and replace.subwindow.logs and
+		replace.subwindow.logs.subwindow
+	then
+		bPets = true;
+		replace.setAnchor('bottom', 'bottomanchor', 'bottom', 'current', -60);
+		content.setAnchor('bottom', 'bottomanchor', 'bottom', 'current', -60);
+		--cs_inv_gb_bot.setVisible(true);
+		--logs_search_input.setVisible(true);
+		createControl('charsheet_groupbox_bot', 'cs_inv_gb_bot')
+		createControl('logs_search_input', 'logs_search_input')
+		createControl('button_search_clear', 'logs_search_clear_btn')
+	else
+		bPets = false;
 	end
 
-	logs_search_input.setValue("");
-	logs_search_input.onEnter = onSearchEnter;
-	logs_search_clear_btn.onButtonPress = onSearchClear;
+	if logs_search_input then logs_search_input.setValue('') end
+	if logs_search_input then logs_search_input.onEnter = onSearchEnter end
+	if logs_search_clear_btn then logs_search_clear_btn.onButtonPress = onSearchClear end
 end
 
 function applySearch()
 	local list = findLogsList();
+	if not list then
+		Debug.console("Winnowing Pursuits - logs_search.lua - not list");
+		return;
+	end
 
 	list.onFilter = function(node)
 		return fSearch(node.getDatabaseNode());
@@ -26,14 +45,16 @@ function applySearch()
 end
 
 function findLogsList()
-	local listSubwindow = content.subwindow;
-
-	-- Friend Zone compatibility
-	if content.subwindow.logs ~= nil then
-		listSubwindow = content.subwindow.logs.subwindow;
+	local listSubwindow;
+	if content and content.subwindow then
+		listSubwindow = content.subwindow;
+	end
+	-- Pets compatibility
+	if bPets then
+		listSubwindow = replace.subwindow.logs.subwindow;
 	end
 
-	return listSubwindow.list;
+	if listSubwindow and listSubwindow.list then return listSubwindow.list end
 end
 
 function onSearchClear()

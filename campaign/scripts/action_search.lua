@@ -76,12 +76,13 @@ function applySearchAndFilter()
 	local ruleset = User.getRulesetName();
 
 	if ruleset == "5E" then
-		local vWindow;
+		local vWin;
 		if content then
-			vWindow = content.subwindow.actions.subwindow;
+			vWin = content.subwindow
 		else --FloatingTabs compatibility
-			vWindow = contents.subwindow.actions.subwindow; --luacheck: ignore 85 143
+			vWin = contents.subwindow
 		end
+		local vWindow = vWin.actions.subwindow;
 		local nodeSpell;
 
 		--vWindow.updateUses();
@@ -104,13 +105,35 @@ function applySearchAndFilter()
 
 		local searchInput = StringManager.trim(actions_search_input.getValue()):lower();
 		if searchInput == 'use object' then searchInput = 'use_object' end
-		for _,control in pairs(content.subwindow.sub_generic_actions.subwindow.getControls()) do
-			if string.match(string.lower(control.getName()), searchInput) then
-				content.subwindow.generic_actions.setFont("subwindowsmalltitle");
-				content.subwindow.sub_generic_actions.setVisible(true);
-				control.setVisible(true);
-			else
-				control.setVisible(false);
+		if vWin.sub_generic_actions and vWin.sub_generic_actions.subwindow then
+			for _,control in pairs(vWin.sub_generic_actions.subwindow.getControls()) do
+				if not fFilter and string.match(string.lower(control.getName()), searchInput) then
+					vWin.generic_actions.setFont("subwindowsmalltitle");
+					vWin.sub_generic_actions.setVisible(true);
+					control.setVisible(true);
+				else
+					control.setVisible(false);
+				end
+			end
+		end
+
+		if fFilter or searchInput ~= '' then
+			if vWin.spellslots_cast.subwindow.spellslots_label then
+				vWin.spellslots_cast.subwindow.spellslots_label.setVisible(false);
+			end
+			if vWin.spellslots_cast.subwindow.spellslots then
+				vWin.spellslots_cast.subwindow.spellslots.setVisible(false);
+			end
+			if vWin.spellslots_cast.subwindow.pactmagicslots_label then
+				vWin.spellslots_cast.subwindow.pactmagicslots_label.setVisible(false);
+			end
+			if vWin.spellslots_cast.subwindow.pactmagicslots then
+				vWin.spellslots_cast.subwindow.pactmagicslots.setVisible(false);
+			end
+			if vWin.spellslots_prep.subwindow.slotstitle then
+				for _,control in pairs(vWin.spellslots_prep.subwindow.getControls()) do
+					if control.getName() ~= 'slotstitle' then control.setVisible(false) end
+				end
 			end
 		end
 	elseif ruleset == "4E" then
@@ -270,8 +293,29 @@ function onSearchClear()
 	actions_search_input.setValue("");
 	actions_search_clear_btn.setVisible(false);
 
-	for _,control in pairs(content.subwindow.sub_generic_actions.subwindow.getControls()) do
-		control.setVisible(true);
+	local vWin;
+	if content then
+		vWin = content.subwindow
+	else --FloatingTabs compatibility
+		vWin = contents.subwindow
+	end
+	if vWin and vWin.sub_generic_actions and vWin.sub_generic_actions.subwindow then
+		for _,control in pairs(vWin.sub_generic_actions.subwindow.getControls()) do
+			control.setVisible(true);
+		end
+	end
+
+	if vWin.spellslots_cast.subwindow.slotstitle and
+		vWin.spellslots_cast.subwindow.slotstitle.getFont() == 'subwindowsmalltitle'
+	then
+		vWin.spellslots_cast.subwindow.onModeChanged();
+	end
+	if vWin.spellslots_prep.subwindow.slotstitle and
+		vWin.spellslots_prep.subwindow.slotstitle.getFont() == 'subwindowsmalltitle'
+	then
+		for _,control in pairs(vWin.spellslots_prep.subwindow.getControls()) do
+			control.setVisible(true);
+		end
 	end
 end
 

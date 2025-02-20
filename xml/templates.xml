@@ -41,4 +41,25 @@
 			<anchored merge="delete" />
 		</stringcontrol>
 	</template>
+
+	<!-- Pets compatibility -->
+	<template name="charsheet_groupbox_bot">
+		<area_content_framed_groupbox_bottom name="cs_inv_gb_bot">
+			<anchored height="20" />
+		</area_content_framed_groupbox_bottom>
+	</template>
+	<template name="logs_search_input">
+		<searchinput name="logs_search_input">
+			<empty>
+				<textres>search_logs</textres>
+			</empty>
+			<anchored to="cs_inv_gb_bot" position="insideleft" width="150" />
+			<tabtarget next="logs_search_input" prev="logs_search_clear_btn"/>
+		</searchinput>
+	</template>
+	<template name="button_search_clear">
+		<searchclear name="logs_search_clear_btn">
+			<anchored to="logs_search_input" position="right" offset="10,0" relation="relative" width="20"/>
+		</searchclear>
+	</template>
 </root>

@@ -43,6 +43,7 @@ SmiteWorks owns rights to code sections copied from their rulesets by permission
 
 ### Change Log
 
+* v2.5.5: Aesthetic improvement to action search. Bug introduced in 2.5.4: FIXED. Accomodations for Pets extension.
 * v2.5.4: Accommodations for latest ruleset changes and new JoAT features. Can now also search Generic Action buttons.
 * v2.5.3: Rare bug with WP checking action uses.  FIXED
 * v2.5.2: Renewed support for Floating Tabs extension
