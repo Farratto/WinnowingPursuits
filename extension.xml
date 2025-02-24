@@ -27,7 +27,7 @@
 		</ruleset>
 		<!-- FloatingTabs (50) compatibility -->
 		<!-- Friend Zone (150) compatibility -->
-		<loadorder>150</loadorder>
+		<loadorder>151</loadorder>
 	</properties>
 	<base>
 		<includefile source="xml/scripts.xml"/>

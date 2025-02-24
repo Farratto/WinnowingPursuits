@@ -3,7 +3,7 @@
 
 -- luacheck: globals applySearchAndFilter findWeaponList initFilterDropdown onFilterFieldChanged
 -- luacheck: globals onFilterOptionChanged onFilterSelect onSearchClear onSearchEnter onSpellModeChange
--- luacheck: globals actions_search_btn actions_search_input actions_search_clear_btn
+-- luacheck: globals actions_search_btn actions_search_input actions_search_clear_btn contents
 -- luacheck: globals subspells subweapons filter_lbl actions_filter_dropdown refreshFilters
 
 local fFilter;
@@ -72,6 +72,7 @@ function onClose()
 	DB.removeHandler(DB.getPath(nodeChar, "powers.*.school"), "onUpdate", onFilterFieldChanged);
 end
 
+--luacheck: push ignore 561
 function applySearchAndFilter()
 	local ruleset = User.getRulesetName();
 
@@ -104,6 +105,22 @@ function applySearchAndFilter()
 		vWindow.powers.applyFilter();
 
 		local searchInput = StringManager.trim(actions_search_input.getValue()):lower();
+		for _,win in pairs(vWin.item_actions.subwindow.list.getWindows()) do
+			local sGroupTitle = string.lower(win.name.getDatabaseNode().getValue());
+			if not fFilter then
+				if string.match(sGroupTitle, searchInput) then
+					win.powerlist.setVisible(true);
+				else
+					--win.powerlist.sSearch = searchInput;
+					--for _,winPower in pairs(win.powerlist.getWindows()) do
+					--	win.powerlist.onFilter(winPower);
+					--	win.powerlist.applyFilter();
+					--end
+					win.powerlist.setVisible(false);
+				end
+			end
+		end
+
 		if searchInput == 'use object' then searchInput = 'use_object' end
 		if vWin.sub_generic_actions and vWin.sub_generic_actions.subwindow then
 			for _,control in pairs(vWin.sub_generic_actions.subwindow.getControls()) do
@@ -218,6 +235,7 @@ function applySearchAndFilter()
 		end
 	end
 end
+--luacheck: pop
 
 function findWeaponList()
 	local ruleset = User.getRulesetName();
