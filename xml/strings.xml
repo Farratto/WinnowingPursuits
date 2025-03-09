@@ -14,6 +14,15 @@
 	<string name="tooltip_filter">Filter based upon properties of inventory items</string>
 	<string name="tooltip_filter_actions">Filter weapons, spells, and other actions</string>
 
+	<!-- Dropdown Filter Labels -->
+	<string name="filteropt_none">None</string>
+	<string name="filteropt_ritual">Ritual</string>
+	<string name="filteropt_school_prefix">School - </string>
+	<string name="filteropt_school_none">&#171; School - None &#187;</string>
+
+	<!-- Options -->
+
+<!--
 	<string name="filteropt_none">None</string>
 	<string name="filteropt_armor">Armor &amp; Shields</string>
 	<string name="filteropt_carried">Carried</string>
@@ -42,4 +51,31 @@
 	<string name="option_header_IF">Inventory Filter Options</string>
 	<string name="option_header_AF">Action Filter Options</string>
 	<string name="option_label_spellschool">Power Schools</string>
+-->
+
+	<string name="option_header_WP">Winnowing Pursuits</string>
+	<string name="option_label_spellschool">Power Schools</string>
+	<!-- Action Filter Options -->
+	<string name="filteropt_schools_label">Action Filter - Schools</string>
+	<string name="filteropt_spells">Action Filter - Spells</string>
+	<string name="filteropt_spells_con">Action Filter - Spells - Concentration</string>
+	<string name="filteropt_spells_notcon">Action Filter - Spells - Not Concentration</string>
+	<string name="filteropt_spells_ritual">Action Filter - Spells - Ritual</string>
+	<string name="filteropt_weapons">Action Filter - Weapons</string>
+	<!-- Inventory Filter Options -->
+	<string name="filteropt_gear">Inventory Filter - Adventuring Gear</string>
+	<string name="filteropt_armor">Inventory Filter - Armor &amp; Shields</string>
+	<string name="filteropt_armorweapons">Inventory Filter - Armor and Weapons</string>
+	<string name="filteropt_carried">Inventory Filter - Carried</string>
+	<string name="filteropt_equipped">Inventory Filter - Equipped</string>
+	<string name="filteropt_goods">Inventory Filter - Goods and Services</string>
+	<string name="filteropt_id">Inventory Filter - Identified</string>
+	<string name="filteropt_magical">Inventory Filter - Magical</string>
+	<string name="filteropt_not_carried">Inventory Filter - Not Carried</string>
+	<string name="filteropt_not_id">Inventory Filter - Not Identified</string>
+	<string name="filteropt_potions">Inventory Filter - Potions</string>
+	<string name="filteropt_attunement">Inventory Filter - Requires Attunement</string>
+	<string name="filteropt_scrolls">Inventory Filter - Spell Scrolls</string>
+	<string name="filteropt_valuables">Inventory Filter - Valuables</string>
+	<string name="filteropt_inv_weapons">Inventory Filter - Weapons</string>
 </root>

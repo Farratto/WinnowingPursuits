@@ -5,7 +5,7 @@
 -- luacheck: globals logs_search_clear_btn replace createControl
 
 local fSearch;
-local bPets;
+--local bPets;
 
 function onInit()
 	if super and super.onInit then super.onInit() end
@@ -13,16 +13,16 @@ function onInit()
 	--if replace and replace.subwindow and replace.subwindow.logs and
 	--	replace.subwindow.logs.subwindow
 	--then
-	if InventoryFiltersManager.hasExtension('Pets')	then
-		bPets = true;
-		--replace.setAnchor('bottom', 'bottomanchor', 'bottom', 'current', -60);
-		content.setAnchor('bottom', 'bottomanchor', 'bottom', 'current', -60);
-		createControl('charsheet_groupbox_bot', 'cs_inv_gb_bot')
-		createControl('logs_search_input', 'logs_search_input')
-		createControl('button_search_clear', 'logs_search_clear_btn')
-	else
-		bPets = false;
-	end
+	--if InventoryFiltersManager.hasExtension('Pets')	then
+	--	bPets = true;
+	--	--replace.setAnchor('bottom', 'bottomanchor', 'bottom', 'current', -60);
+	--	content.setAnchor('bottom', 'bottomanchor', 'bottom', 'current', -60);
+	--	createControl('charsheet_groupbox_bot', 'cs_inv_gb_bot')
+	--	createControl('logs_search_input', 'logs_search_input')
+	--	createControl('button_search_clear', 'logs_search_clear_btn')
+	--else
+	--	bPets = false;
+	--end
 
 	if logs_search_input then logs_search_input.setValue('') end
 	if logs_search_input then logs_search_input.onEnter = onSearchEnter end
@@ -49,10 +49,10 @@ function findLogsList()
 		listSubwindow = content.subwindow;
 	end
 	-- Pets compatibility
-	if bPets then
-		--listSubwindow = replace.subwindow.logs.subwindow;
-		listSubwindow = content.subwindow.logs.subwindow;
-	end
+	--if bPets then
+	--	--listSubwindow = replace.subwindow.logs.subwindow;
+	--	listSubwindow = content.subwindow.logs.subwindow;
+	--end
 
 	if listSubwindow and listSubwindow.list then return listSubwindow.list end
 end

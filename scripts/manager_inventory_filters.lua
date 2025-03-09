@@ -41,7 +41,8 @@ function onInit()
 				return (ItemManager2.isArmor(item));
 			end },
 		[4] = {
-			sLabelRes = "filteropt_weapons",
+			--sLabelRes = "filteropt_weapons",
+			sLabelRes = "filteropt_inv_weapons",
 			sOptKey = "ISopt_weapons",
 			bPartySearch = true,
 			fFilter = function(item)
@@ -184,7 +185,8 @@ function onInit()
 
 	for _, v in ipairs(filterOptions) do
 		if v.sOptKey ~= nil and (v.sRulesetFilter == nil or v.sRulesetFilter == ruleset) then
-			OptionsManager.registerOption2(v.sOptKey, true, "option_header_IF", v.sLabelRes, "option_entry_cycler",
+			--OptionsManager.registerOption2(v.sOptKey, true, "option_header_IF", v.sLabelRes, "option_entry_cycler",
+			OptionsManager.registerOption2(v.sOptKey, true, "option_header_WP", v.sLabelRes, "option_entry_cycler",
 					{ labels = "option_val_on", values = "on", baselabel = "option_val_off", baseval = "off", default = "on" });
 			OptionsManager.registerCallback(v.sOptKey, onOptionChanged);
 		end

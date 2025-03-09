@@ -19,9 +19,10 @@
 			<button_search_clear />
 		</sheetdata>
 	</windowclass>
-
 	<!-- Pets compatibility -->
+<!--
 	<windowclass name="charsheet_notes" merge="join">
 		<script file="campaign/scripts/logs_search.lua"/>
 	</windowclass>
+-->
 </root>

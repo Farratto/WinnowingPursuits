@@ -43,6 +43,7 @@ SmiteWorks owns rights to code sections copied from their rulesets by permission
 
 ### Change Log
 
+* v2.6.1: FIXED: for window changes in latest 5E ruleset
 * v2.6.0: FEATURE: now searches JoAT item group names. Minor bug FIX.
 * v2.5.5: Aesthetic improvement to action search. Bug introduced in 2.5.4: FIXED. Accomodations for Pets extension.
 * v2.5.4: Accommodations for latest ruleset changes and new JoAT features. Can now also search Generic Action buttons.

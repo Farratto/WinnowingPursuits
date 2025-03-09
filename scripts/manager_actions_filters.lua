@@ -30,7 +30,8 @@ end
 
 function configureOption(sOptKey, sOptLabelRes)
 	if OptionsManager.getOption(sOptKey) == "" then
-		OptionsManager.registerOption2(sOptKey, true, "option_header_AF", sOptLabelRes, "option_entry_cycler",
+		--OptionsManager.registerOption2(sOptKey, true, "option_header_AF", sOptLabelRes, "option_entry_cycler",
+		OptionsManager.registerOption2(sOptKey, true, "option_header_WP", sOptLabelRes, "option_entry_cycler",
 				{ labels = "option_val_on", values = "on", baselabel = "option_val_off", baseval = "off", default = "on" });
 		OptionsManager.registerCallback(sOptKey, onOptionChanged);
 	end
