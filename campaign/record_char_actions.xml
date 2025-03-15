@@ -36,6 +36,7 @@
 
 			<filtercombo name="actions_filter_dropdown">
 				<anchored to="filter_lbl" position="right" offset="10,0" width="165"/>
+				<listmaxsize>20</listmaxsize>
 			</filtercombo>
 		</sheetdata>
 	</windowclass>

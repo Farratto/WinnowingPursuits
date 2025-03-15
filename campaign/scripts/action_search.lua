@@ -105,18 +105,15 @@ function applySearchAndFilter()
 		vWindow.powers.applyFilter();
 
 		local searchInput = StringManager.trim(actions_search_input.getValue()):lower();
-		for _,win in pairs(vWin.item_actions.subwindow.list.getWindows()) do
-			local sGroupTitle = string.lower(win.name.getDatabaseNode().getValue());
-			if not fFilter then
-				if string.match(sGroupTitle, searchInput) then
-					win.powerlist.setVisible(true);
-				else
-					--win.powerlist.sSearch = searchInput;
-					--for _,winPower in pairs(win.powerlist.getWindows()) do
-					--	win.powerlist.onFilter(winPower);
-					--	win.powerlist.applyFilter();
-					--end
-					win.powerlist.setVisible(false);
+		if vWin.item_actions then
+			for _,win in pairs(vWin.item_actions.subwindow.list.getWindows()) do
+				local sGroupTitle = string.lower(win.name.getDatabaseNode().getValue());
+				if not fFilter then
+					if string.match(sGroupTitle, searchInput) then
+						win.powerlist.setVisible(true);
+					else
+						win.powerlist.setVisible(false);
+					end
 				end
 			end
 		end
@@ -314,7 +311,7 @@ function onSearchClear()
 	local vWin;
 	if content then
 		vWin = content.subwindow
-	else --FloatingTabs compatibility
+	elseif contents then --FloatingTabs compatibility
 		vWin = contents.subwindow
 	end
 	if vWin and vWin.sub_generic_actions and vWin.sub_generic_actions.subwindow then
@@ -323,12 +320,12 @@ function onSearchClear()
 		end
 	end
 
-	if vWin.spellslots_cast.subwindow.slotstitle and
+	if vWin and vWin.spellslots_cast.subwindow.slotstitle and
 		vWin.spellslots_cast.subwindow.slotstitle.getFont() == 'subwindowsmalltitle'
 	then
 		vWin.spellslots_cast.subwindow.onModeChanged();
 	end
-	if vWin.spellslots_prep.subwindow.slotstitle and
+	if vWin and vWin.spellslots_prep.subwindow.slotstitle and
 		vWin.spellslots_prep.subwindow.slotstitle.getFont() == 'subwindowsmalltitle'
 	then
 		for _,control in pairs(vWin.spellslots_prep.subwindow.getControls()) do
@@ -363,7 +360,8 @@ function refreshFilters()
 	actions_filter_dropdown.clear();
 	for _, v in ipairs(ActionsFiltersManager.getFilterOptions(nodeChar)) do
 		if v.sLabelRes then
-			actions_filter_dropdown.add(Interface.getString(v.sLabelRes));
+			local sTruncated = string.gsub(Interface.getString(v.sLabelRes), 'Action Filter %- ', '');
+			actions_filter_dropdown.add(sTruncated);
 		else
 			actions_filter_dropdown.add(v.sLabel);
 		end

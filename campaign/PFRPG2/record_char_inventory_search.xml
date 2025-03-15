@@ -17,8 +17,7 @@
 			</frame_char>
 
 			<buttoncontrol name="inv_search_btn">
-<!--				<anchored to="inventorysearchframe" position="insidetopleft" offset="8,13" width="20" height="20"/> -->
-				<anchored to="inventorysearchframe" position="insidetopleft" offset="8,13" width="20" />
+				<anchored to="inventorysearchframe" position="insidetopleft" offset="8,13" width="20" height="20"/>
 				<icon normal="search"/>
 				<tooltip textres="tooltip_search"/>
 			</buttoncontrol>
@@ -37,6 +36,7 @@
 			</label_noanch>
 			<filtercombo name="inv_filter_dropdown">
 				<anchored to="filter_lbl" position="right" offset="10,0" width="150"/>
+				<listmaxsize>14</listmaxsize>
 			</filtercombo>
 		</sheetdata>
 	</windowclass>

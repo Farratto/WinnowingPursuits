@@ -31,6 +31,7 @@
 
 			<filtercombo name="actions_filter_dropdown">
 				<anchored to="controlsframe" position="insidebottomright" offset="17,13" width="165"/>
+				<listmaxsize>20</listmaxsize>
 			</filtercombo>
 			<label_noanch name="filter_lbl">
 				<anchored to="actions_filter_dropdown" position="left" offset="10,0"/>

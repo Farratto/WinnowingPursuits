@@ -43,6 +43,7 @@ SmiteWorks owns rights to code sections copied from their rulesets by permission
 
 ### Change Log
 
+* v2.6.2: FIXED: nil errors in some circumstances, filter labels not correct, missing inv filter on non-5E rulesets, filter dropdowns being cutoff.
 * v2.6.1: FIXED: for window changes in latest 5E ruleset
 * v2.6.0: FEATURE: now searches JoAT item group names. Minor bug FIX.
 * v2.5.5: Aesthetic improvement to action search. Bug introduced in 2.5.4: FIXED. Accomodations for Pets extension.

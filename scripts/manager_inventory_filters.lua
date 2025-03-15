@@ -119,6 +119,7 @@ function onInit()
 		[10] = {
 			sLabelRes = "filteropt_attunement",
 			sOptKey = "ISopt_attunement",
+			sRulesetFilter = "5E",
 			bPartySearch = true,
 			fFilter = function(item)
 				return CharAttunementManager.doesItemAllowAttunement(item);
@@ -233,10 +234,12 @@ end
 function findFilterOption(sLabelRes, sLabelValue, sOptKey)
 	local option;
 
+	local sExpanded = 'Inventory Filter - ' .. sLabelValue;
 	for _, v in ipairs(filterOptions) do
 		if sLabelRes ~= nil and sLabelRes == v.sLabelRes then
 			option = v;
-		elseif sLabelValue ~= nil and Interface.getString(v.sLabelRes) == sLabelValue then
+		--elseif sLabelValue ~= nil and Interface.getString(v.sLabelRes) == sLabelValue then
+		elseif sLabelValue ~= nil and Interface.getString(v.sLabelRes) == sExpanded then
 			option = v;
 		elseif sOptKey ~= nil and sOptKey == v.sOptKey then
 			option = v;

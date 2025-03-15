@@ -27,6 +27,7 @@
 
 			<filtercombo name="actions_filter_dropdown">
 				<anchored to="area_controls" position="insidebottomright" width="165"/>
+				<listmaxsize>20</listmaxsize>
 			</filtercombo>
 			<label_noanch name="filter_lbl">
 				<anchored to="actions_filter_dropdown" position="left" offset="10,0"/>
@@ -67,6 +68,7 @@
 					<bottom parent="actions_search_input" anchor="bottom" />
 					<right parent="actions_iedit" anchor="right" />
 				</anchored>
+				<listmaxsize>16</listmaxsize>
 			</filtercombo>
 			<label_noanch name="filter_lbl">
 				<anchored to="actions_filter_dropdown" position="left" offset="10,0"/>

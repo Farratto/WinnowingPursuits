@@ -79,7 +79,8 @@ function initFilterDropdown()
 		if (v.sOptKey == nil or OptionsManager.isOption(v.sOptKey, "on")) and (v.sRulesetFilter == nil
 			or v.sRulesetFilter == ruleset) and ((not bIsPS) or v.bPartySearch
 		) then
-			inv_filter_dropdown.add(Interface.getString(v.sLabelRes));
+			local sTruncated = string.gsub(Interface.getString(v.sLabelRes), 'Inventory Filter %- ', '');
+			inv_filter_dropdown.add(sTruncated);
 		end
 	end
 

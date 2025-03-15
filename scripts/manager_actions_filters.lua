@@ -40,10 +40,12 @@ end
 function findFilterOption(nodeChar, sLabelRes, sLabelValue)
 	local option;
 
+	local sExpanded = 'Action Filter - ' .. sLabelValue;
 	for _, v in ipairs(getFilterOptions(nodeChar)) do
 		if sLabelRes ~= nil and sLabelRes == v.sLabelRes then
 			option = v;
-		elseif sLabelValue ~= nil and ((v.sLabel == sLabelValue) or (Interface.getString(v.sLabelRes) == sLabelValue)) then
+		--elseif sLabelValue ~= nil and ((v.sLabel == sLabelValue) or (Interface.getString(v.sLabelRes) == sLabelValue)) then
+		elseif sExpanded ~= nil and ((v.sLabel == sLabelValue) or (Interface.getString(v.sLabelRes) == sExpanded)) then
 			option = v;
 		end
 	end
