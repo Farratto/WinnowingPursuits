@@ -13,6 +13,9 @@ local CONCENTRATION_FILTER_OPTION = "AFopt_spells_con";
 local NOT_CONCENTRATION_FILTER_OPTION = "AFopt_spells_notcon";
 local RITUAL_FILTER_OPTION = "AFopt_spells_ritual";
 local SCHOOL_FILTER_OPTION = "AFopt_spellschool";
+local ACTION_FILTER_OPTION = 'AFopt_spells_action';
+local BONUS_ACTION_FILTER_OPTION = 'AFopt_spells_bonus_action';
+local REACTION_FILTER_OPTION = 'AFopt_spells_reaction';
 
 function onInit()
 	bHasExtensionAdvancedCharsheet = self.hasExtension("Advanced Charsheet") or self.hasExtension("AdvancedCharsheet");
@@ -26,6 +29,9 @@ function onInit()
 	configureOption(NOT_CONCENTRATION_FILTER_OPTION, "filteropt_spells_notcon");
 	configureOption(RITUAL_FILTER_OPTION, "filteropt_spells_ritual");
 	configureOption(SCHOOL_FILTER_OPTION, "filteropt_schools_label");
+	configureOption(ACTION_FILTER_OPTION, 'filteropt_spells_action');
+	configureOption(BONUS_ACTION_FILTER_OPTION, 'filteropt_spells_bonus_action');
+	configureOption(REACTION_FILTER_OPTION, 'filteropt_spells_reaction');
 end
 
 function configureOption(sOptKey, sOptLabelRes)
@@ -124,6 +130,33 @@ function getFilterOptions(nodeChar)
 			sLabelRes = "filteropt_spells_ritual",
 			fFilter = function(item)
 				return DB.getValue(item, "ritual", 0) == 1;
+			end
+		});
+	end
+
+	if ruleset == "5E" and OptionsManager.isOption(ACTION_FILTER_OPTION, "on") then
+		table.insert(aFilterOptions, {
+			sLabelRes = 'filteropt_spells_action',
+			fFilter = function(item)
+				return string.match(string.lower(DB.getValue(item, 'castingtime', '')), 'action') ~= nil;
+			end
+		});
+	end
+	if ruleset == "5E" and OptionsManager.isOption(BONUS_ACTION_FILTER_OPTION, "on") then
+		table.insert(aFilterOptions, {
+			sLabelRes = 'filteropt_spells_bonus_action',
+			fFilter = function(item)
+				return string.match(string.lower(DB.getValue(item, 'castingtime', '')), 'bonus action'
+					) ~= nil
+				;
+			end
+		});
+	end
+	if ruleset == "5E" and OptionsManager.isOption(REACTION_FILTER_OPTION, "on") then
+		table.insert(aFilterOptions, {
+			sLabelRes = 'filteropt_spells_reaction',
+			fFilter = function(item)
+				return string.match(string.lower(DB.getValue(item, 'castingtime', '')), 'reaction') ~= nil;
 			end
 		});
 	end

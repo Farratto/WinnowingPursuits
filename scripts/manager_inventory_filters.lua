@@ -1,9 +1,9 @@
 -- Please see the LICENSE.txt file included with this distribution for
 -- attribution and copyright information.
 
--- luacheck: globals isValuable setValueTypes findFilterOption setFilterOptionListener removeFilterOptionListener
+-- luacheck: globals isValuable setValueTypes findFilterOption setFilterOptionListener
 -- luacheck: globals onOptionChanged buildPartyInventoryWP tValueTypes fbuildPartyInventory filterOptions
--- luacheck: globals _bAllowBuildPartyInventory hasExtension
+-- luacheck: globals _bAllowBuildPartyInventory hasExtension removeFilterOptionListener
 
 tValueTypes = {};
 fbuildPartyInventory = '';

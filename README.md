@@ -33,6 +33,7 @@ Extensions supported:
 * Combat Timer
 * Jack of All Things
 * Generic Actions
+* Capital Gains
 
 ### Attribution
 
@@ -43,6 +44,7 @@ SmiteWorks owns rights to code sections copied from their rulesets by permission
 
 ### Change Log
 
+* v2.7.0: FIXED: interaction with JoAT items and Generic Actions. FEATURES: now searches Capital Gains fields and Current Effects from Mad Nomad extension. Action, Bonus Action, & Reaction added as filters
 * v2.6.2: FIXED: nil errors in some circumstances, filter labels not correct, missing inv filter on non-5E rulesets, filter dropdowns being cutoff.
 * v2.6.1: FIXED: for window changes in latest 5E ruleset
 * v2.6.0: FEATURE: now searches JoAT item group names. Minor bug FIX.

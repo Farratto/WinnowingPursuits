@@ -61,6 +61,9 @@
 	<string name="filteropt_spells_con">Action Filter - Spells - Concentration</string>
 	<string name="filteropt_spells_notcon">Action Filter - Spells - Not Concentration</string>
 	<string name="filteropt_spells_ritual">Action Filter - Spells - Ritual</string>
+	<string name="filteropt_spells_action">Action Filter - Action</string>
+	<string name="filteropt_spells_bonus_action">Action Filter - Bonus Action</string>
+	<string name="filteropt_spells_reaction">Action Filter - Reaction</string>
 	<string name="filteropt_weapons">Action Filter - Weapons</string>
 	<!-- Inventory Filter Options -->
 	<string name="filteropt_gear">Inventory Filter - Adventuring Gear</string>

@@ -4,10 +4,12 @@
 -- luacheck: globals applySearchAndFilter findWeaponList initFilterDropdown onFilterFieldChanged
 -- luacheck: globals onFilterOptionChanged onFilterSelect onSearchClear onSearchEnter onSpellModeChange
 -- luacheck: globals actions_search_btn actions_search_input actions_search_clear_btn contents
--- luacheck: globals subspells subweapons filter_lbl actions_filter_dropdown refreshFilters
+-- luacheck: globals subspells subweapons filter_lbl actions_filter_dropdown refreshFilters fonFilterCgWP
 
 local fFilter;
 local fSearch;
+local vWin;
+--local tSwapped = {};
 
 function onInit()
 	if super and super.onInit then super.onInit() end
@@ -38,6 +40,16 @@ function onInit()
 		else
 			nodeModeButton = spellmode.getDatabaseNode();
 		end
+	end
+
+	if content then
+		vWin = content.subwindow
+	elseif contents then --FloatingTabs compatibility
+		vWin = contents.subwindow
+	end
+
+	if vWin.resources.subwindow.list then
+		vWin.resources.subwindow.list.onFilter = fonFilterCgWP;
 	end
 
 	local nodeChar = getDatabaseNode();
@@ -77,18 +89,22 @@ function applySearchAndFilter()
 	local ruleset = User.getRulesetName();
 
 	if ruleset == "5E" then
-		local vWin;
-		if content then
-			vWin = content.subwindow
-		else --FloatingTabs compatibility
-			vWin = contents.subwindow
-		end
 		local vWindow = vWin.actions.subwindow;
 		local nodeSpell;
 
 		--vWindow.updateUses();
 		vWindow.updatePowerGroups();
 
+		--native FGU
+--[[
+		if #tSwapped > 0 then
+			for _,win in ipairs(tSwapped) do
+				vWindow.powers.onHeaderToggle(win);
+			end
+			tSwapped = {};
+		end
+		local tGroups = {};
+]]
 		for _, vPowerPage in pairs(vWindow.powers.getWindows()) do
 			if vPowerPage.getClass() ~= "power_group_header" and vPowerPage.getFilter() == true then
 				nodeSpell = vPowerPage.getDatabaseNode();
@@ -98,37 +114,107 @@ function applySearchAndFilter()
 
 				if not (bMatchesFilter and bMatchesSearch) then
 					vPowerPage.setFilter(false);
+				--else
+				--	table.insert(tGroups, DB.getValue(nodeSpell, 'group', ''));
 				end
 			end
 		end
-
+--[[
+		for _,winPower in pairs(vWindow.powers.getWindows()) do
+			if winPower.getClass() == "power_group_header" then
+				local bFound;
+				for k,sGroup in ipairs(tGroups) do
+					if not bFound and sGroup == winPower.name.getValue()
+						--and winPower.name.getFont() ~= "subwindowsmalltitle"
+					then
+						vWindow.powers.onHeaderToggle(winPower,true);
+						table.insert(tSwapped, winPower);
+						bFound = true;
+						table.remove(tGroups, k)
+					end
+				end
+			end
+		end
+]]
 		vWindow.powers.applyFilter();
 
 		local searchInput = StringManager.trim(actions_search_input.getValue()):lower();
-		if vWin.item_actions then
-			for _,win in pairs(vWin.item_actions.subwindow.list.getWindows()) do
-				local sGroupTitle = string.lower(win.name.getDatabaseNode().getValue());
+
+		--MNM Charsheet Effects Display
+		if vWin.effectstitle then
+			local nodeMNM = DB.getChild(getDatabaseNode(), 'MNMCharacterSheetEffectsDisplay');
+			if not fFilter and string.match(string.lower(DB.getValue(nodeMNM, 'effectlist')), searchInput)
+				and (searchInput ~= '' or vWin.effectstitle.getFont() == "subwindowsmalltitle")
+			then
+				vWin.effects.setVisible(true);
+				vWin.weapon_header.setAnchor('top', 'contentanchor', 'bottom', 'relative', 85);
+			else
+				vWin.effects.setVisible(false);
+				vWin.weapon_header.setAnchor('top', 'contentanchor', 'bottom', 'relative', 45);
+			end
+		end
+
+		local winJoatItemActions = vWin.item_actions;
+		if winJoatItemActions then
+			for _,win in pairs(winJoatItemActions.subwindow.list.getWindows()) do
 				if not fFilter then
+					local sGroupTitle = string.lower(win.name.getDatabaseNode().getValue());
 					if string.match(sGroupTitle, searchInput) then
-						win.powerlist.setVisible(true);
+						if searchInput ~= '' or win.name.getFont() == "subwindowsmalltitle" then
+							win.powerlist.setVisible(true);
+						end
 					else
 						win.powerlist.setVisible(false);
 					end
+				else
+					win.powerlist.setVisible(false);
+				end
+			end
+		end
+		winJoatItemActions = vWin.item_actions_top;
+		if winJoatItemActions then
+			for _,win in pairs(winJoatItemActions.subwindow.list.getWindows()) do
+				if not fFilter then
+					local sGroupTitle = string.lower(win.name.getDatabaseNode().getValue());
+					if string.match(sGroupTitle, searchInput) then
+						if searchInput ~= '' or win.name.getFont() == "subwindowsmalltitle" then
+							win.powerlist.setVisible(true);
+						end
+					else
+						win.powerlist.setVisible(false);
+					end
+				else
+					win.powerlist.setVisible(false);
 				end
 			end
 		end
 
 		if searchInput == 'use object' then searchInput = 'use_object' end
 		if vWin.sub_generic_actions and vWin.sub_generic_actions.subwindow then
+			local bFound;
 			for _,control in pairs(vWin.sub_generic_actions.subwindow.getControls()) do
 				if not fFilter and string.match(string.lower(control.getName()), searchInput) then
-					vWin.generic_actions.setFont("subwindowsmalltitle");
-					vWin.sub_generic_actions.setVisible(true);
 					control.setVisible(true);
+					bFound = true;
 				else
 					control.setVisible(false);
 				end
 			end
+			if bFound and (searchInput ~= '' or vWin.generic_actions.getFont() == "subwindowsmalltitle"
+				)
+			then
+				vWin.sub_generic_actions.setVisible(true);
+			else
+				vWin.sub_generic_actions.setVisible(false);
+			end
+		end
+
+		--Capital Gains
+		if vWin.resources then
+			for _,winResource in pairs(vWin.resources.subwindow.list.getWindows()) do
+				fonFilterCgWP(winResource);
+			end
+			vWin.resources.subwindow.list.applyFilter();
 		end
 
 		if fFilter or searchInput ~= '' then
@@ -148,6 +234,12 @@ function applySearchAndFilter()
 				for _,control in pairs(vWin.spellslots_prep.subwindow.getControls()) do
 					if control.getName() ~= 'slotstitle' then control.setVisible(false) end
 				end
+			end
+		else
+			if vWin and vWin.spellslots_cast.subwindow.slotstitle and
+				vWin.spellslots_cast.subwindow.slotstitle.getFont() == 'subwindowsmalltitle'
+			then
+				vWin.spellslots_cast.subwindow.onModeChanged();
 			end
 		end
 	elseif ruleset == "4E" then
@@ -308,15 +400,54 @@ function onSearchClear()
 	actions_search_input.setValue("");
 	actions_search_clear_btn.setVisible(false);
 
-	local vWin;
-	if content then
-		vWin = content.subwindow
-	elseif contents then --FloatingTabs compatibility
-		vWin = contents.subwindow
+	--MNM Charsheet Effects Display
+	if vWin.effectstitle then
+		if not fFilter and vWin.effectstitle.getFont() == "subwindowsmalltitle" then
+			vWin.effects.setVisible(true);
+			vWin.weapon_header.setAnchor('top', 'contentanchor', 'bottom', 'relative', 85);
+		else
+			vWin.effects.setVisible(false);
+			vWin.weapon_header.setAnchor('top', 'contentanchor', 'bottom', 'relative', 45);
+		end
 	end
+
+	local winJoatItemActions = vWin.item_actions;
+	if winJoatItemActions then
+		for _,win in pairs(winJoatItemActions.subwindow.list.getWindows()) do
+			if not fFilter then
+				if win.name.getFont() == "subwindowsmalltitle" then
+					win.powerlist.setVisible(true);
+				else
+					win.powerlist.setVisible(false);
+				end
+			else
+				win.powerlist.setVisible(false);
+			end
+		end
+	end
+	winJoatItemActions = vWin.item_actions_top;
+	if winJoatItemActions then
+		for _,win in pairs(winJoatItemActions.subwindow.list.getWindows()) do
+			if not fFilter then
+				if win.name.getFont() == "subwindowsmalltitle" then
+					win.powerlist.setVisible(true);
+				else
+					win.powerlist.setVisible(false);
+				end
+			else
+				win.powerlist.setVisible(false);
+			end
+		end
+	end
+
 	if vWin and vWin.sub_generic_actions and vWin.sub_generic_actions.subwindow then
 		for _,control in pairs(vWin.sub_generic_actions.subwindow.getControls()) do
 			control.setVisible(true);
+		end
+		if not fFilter and vWin.generic_actions.getFont() == "subwindowsmalltitle" then
+			vWin.sub_generic_actions.setVisible(true);
+		else
+			vWin.sub_generic_actions.setVisible(false);
 		end
 	end
 
@@ -366,4 +497,14 @@ function refreshFilters()
 			actions_filter_dropdown.add(v.sLabel);
 		end
 	end
+end
+
+function fonFilterCgWP(w)
+	if fFilter then return false end
+
+	local searchInput = StringManager.trim(actions_search_input.getValue()):lower();
+	local nodeWin = w.getDatabaseNode();
+	local sName = DB.getValue(nodeWin, "name", ""):lower();
+
+	return string.find(sName, searchInput);
 end
