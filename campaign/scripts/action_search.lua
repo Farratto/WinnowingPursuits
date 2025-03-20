@@ -48,7 +48,7 @@ function onInit()
 		vWin = contents.subwindow
 	end
 
-	if vWin.resources.subwindow.list then
+	if vWin.resources and vWin.resources.subwindow and vWin.resources.subwindow.list then
 		vWin.resources.subwindow.list.onFilter = fonFilterCgWP;
 	end
 
@@ -210,7 +210,7 @@ function applySearchAndFilter()
 		end
 
 		--Capital Gains
-		if vWin.resources then
+		if vWin.resources and vWin.resources.subwindow and vWin.resources.subwindow.list then
 			for _,winResource in pairs(vWin.resources.subwindow.list.getWindows()) do
 				fonFilterCgWP(winResource);
 			end
