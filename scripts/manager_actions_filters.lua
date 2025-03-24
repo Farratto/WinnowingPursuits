@@ -138,7 +138,14 @@ function getFilterOptions(nodeChar)
 		table.insert(aFilterOptions, {
 			sLabelRes = 'filteropt_spells_action',
 			fFilter = function(item)
-				return string.match(string.lower(DB.getValue(item, 'castingtime', '')), 'action') ~= nil;
+				local sCastingTime = string.lower(DB.getValue(item, 'castingtime', ''));
+				if string.match(sCastingTime, 'action') and not string.match(sCastingTime, 'reaction')
+					and not string.match(sCastingTime, 'bonus')
+				then
+					return true;
+				else
+					return false;
+				end
 			end
 		});
 	end

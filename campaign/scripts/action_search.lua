@@ -1,13 +1,13 @@
 -- Please see the LICENSE.txt file included with this distribution for
 -- attribution and copyright information.
 
--- luacheck: globals applySearchAndFilter findWeaponList initFilterDropdown onFilterFieldChanged
--- luacheck: globals onFilterOptionChanged onFilterSelect onSearchClear onSearchEnter onSpellModeChange
--- luacheck: globals actions_search_btn actions_search_input actions_search_clear_btn contents
--- luacheck: globals subspells subweapons filter_lbl actions_filter_dropdown refreshFilters fonFilterCgWP
+--luacheck: globals applySearchAndFilter findWeaponList initFilterDropdown onFilterFieldChanged fFilter
+--luacheck: globals onFilterOptionChanged onFilterSelect onSearchClear onSearchEnter onSpellModeChange
+--luacheck: globals actions_search_btn actions_search_input actions_search_clear_btn contents
+--luacheck: globals subspells subweapons filter_lbl actions_filter_dropdown refreshFilters fonFilterCgWP
 
-local fFilter;
-local fSearch;
+fFilter = nil;
+local fSearch = nil;
 local vWin;
 --local tSwapped = {};
 
@@ -48,7 +48,7 @@ function onInit()
 		vWin = contents.subwindow
 	end
 
-	if vWin.resources and vWin.resources.subwindow and vWin.resources.subwindow.list then
+	if vWin and vWin.resources and vWin.resources.subwindow and vWin.resources.subwindow.list then
 		vWin.resources.subwindow.list.onFilter = fonFilterCgWP;
 	end
 
@@ -236,7 +236,7 @@ function applySearchAndFilter()
 				end
 			end
 		else
-			if vWin and vWin.spellslots_cast.subwindow.slotstitle and
+			if vWin.spellslots_cast.subwindow.slotstitle and
 				vWin.spellslots_cast.subwindow.slotstitle.getFont() == 'subwindowsmalltitle'
 			then
 				vWin.spellslots_cast.subwindow.onModeChanged();
@@ -401,7 +401,7 @@ function onSearchClear()
 	actions_search_clear_btn.setVisible(false);
 
 	--MNM Charsheet Effects Display
-	if vWin.effectstitle then
+	if vWin and vWin.effectstitle then
 		if not fFilter and vWin.effectstitle.getFont() == "subwindowsmalltitle" then
 			vWin.effects.setVisible(true);
 			vWin.weapon_header.setAnchor('top', 'contentanchor', 'bottom', 'relative', 85);
@@ -411,7 +411,8 @@ function onSearchClear()
 		end
 	end
 
-	local winJoatItemActions = vWin.item_actions;
+	local winJoatItemActions;
+	if vWin then winJoatItemActions = vWin.item_actions end
 	if winJoatItemActions then
 		for _,win in pairs(winJoatItemActions.subwindow.list.getWindows()) do
 			if not fFilter then
@@ -425,7 +426,7 @@ function onSearchClear()
 			end
 		end
 	end
-	winJoatItemActions = vWin.item_actions_top;
+	if vWin then winJoatItemActions = vWin.item_actions_top end
 	if winJoatItemActions then
 		for _,win in pairs(winJoatItemActions.subwindow.list.getWindows()) do
 			if not fFilter then
