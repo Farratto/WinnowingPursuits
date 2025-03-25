@@ -95,9 +95,9 @@ function getFilterOptions(nodeChar)
 		table.insert(aFilterOptions, {
 			sLabelRes = "filteropt_spells_con",
 			fFilter = function(item)
-				if not self.isSpell(item, ruleset) then
-					return false;
-				end
+				--if not self.isSpell(item, ruleset) then
+				--	return false;
+				--end
 
 				if ruleset == "PFRPG2" then
 					return DB.getValue(item, "traits", ""):lower():find("concentrate") ~= nil;
@@ -256,7 +256,12 @@ end
 
 function isSpell(vRecord, sRuleset)
 	if sRuleset == "5E" then
-		return DB.getValue(vRecord, "group", ""):lower() == "spells"
+		local sGroup = DB.getValue(vRecord, "group", ""):lower();
+		if sGroup == "spells" or string.match(sGroup, 'spells %(%l+%)') then
+			return true;
+		else
+			return false;
+		end
 	end
 
 	return vRecord.getParent().getName() == "spells";
