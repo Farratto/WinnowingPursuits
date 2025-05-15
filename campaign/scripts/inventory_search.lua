@@ -10,9 +10,7 @@ local fFilter;
 local fSearch;
 
 function onInit()
-	if super and super.onInit then
-		super.onInit();
-	end
+	if super and super.onInit then super.onInit() end
 
 	inv_search_input.setValue("");
 	inv_search_input.onEnter = onSearchEnter;

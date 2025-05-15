@@ -4,10 +4,10 @@
 	attribution and copyright information.
 -->
 <root>
-	<announcement font="emotefont" icon="WP_tiny" text="Winnowing Pursuits ~dev_version~"/>
+	<announcement font="emotefont" icon="WP_tiny" text="Winnowing Pursuits ~v2.7.3-dev~"/>
 	<properties>
 		<name>Feature: Winnowing Pursuits</name>
-		<version>~dev_version~</version>
+		<version>~v-dev~</version>
 		<author>anathemort</author>
 		<description>Provides search and filter controls for actions, logs, inventory, and party inventory</description>
 		<ruleset>
@@ -37,8 +37,8 @@
 		<script name="PowerUpWP">
 			function onInit()
 				if PowerUp then
-					PowerUp.registerExtension("Winnowing Pursuits", "~dev_version~", {
-						['message'] = "~dev_version~\~update_notes~"
+					PowerUp.registerExtension("Winnowing Pursuits", "~v-dev~", {
+						['message'] = "~v-dev~: ~update_notes~"
 					});
 				end
 			end

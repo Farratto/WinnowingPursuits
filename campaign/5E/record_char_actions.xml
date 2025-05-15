@@ -42,9 +42,7 @@
 			function onModeChanged()
 				local winTop = parentcontrol.window.parentcontrol.window;
 				local searchInput = winTop.actions_search_input.getValue();
-				if winTop.fFilter or searchInput ~= '' then
-					return;
-				end
+				if winTop.fFilter or searchInput ~= '' then return end
 
 				if super and super.onModeChanged then return super.onModeChanged() end
 			end
@@ -55,9 +53,7 @@
 			function onLockModeChanged(bReadOnly)
 				local winTop = parentcontrol.window.parentcontrol.window;
 				local searchInput = winTop.actions_search_input.getValue();
-				if winTop.fFilter or searchInput ~= '' then
-					return;
-				end
+				if winTop.fFilter or searchInput ~= '' then return end
 
 				if super and super.onLockModeChanged then return super.onLockModeChanged(bReadOnly) end
 			end
