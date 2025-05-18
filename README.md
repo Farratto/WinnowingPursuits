@@ -45,7 +45,7 @@ SmiteWorks owns rights to code sections copied from their rulesets by permission
 
 ### Change Log
 
-* v: Loosened some of the filter rules to accomodate Pathfinder 1 a bit better
+* v2.7.4: Loosened some of the filter rules to accomodate Pathfinder 1 a bit better
 * v2.7.3: FIXED: not recognizing groups with class names in them as spells in 5E ruleset
 * v2.7.2: FIXED: nil error on PFRGP/3.5E. FIXED: action filter not reporting correctly. Improved behavior when locking/unlocking character sheet.
 * v2.7.1: FIXED: nil error when not loading Capital Gains
