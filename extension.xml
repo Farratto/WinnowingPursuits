@@ -4,7 +4,7 @@
 	attribution and copyright information.
 -->
 <root>
-	<announcement font="emotefont" icon="WP_tiny" text="Winnowing Pursuits ~v2.7.3-dev~"/>
+	<announcement font="emotefont" icon="WP_tiny" text="Winnowing Pursuits ~v2.7.4-dev~"/>
 	<properties>
 		<name>Feature: Winnowing Pursuits</name>
 		<version>~v-dev~</version>

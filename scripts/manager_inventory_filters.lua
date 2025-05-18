@@ -103,10 +103,22 @@ function onInit()
 			bPartySearch = true,
 			fFilter = function(item)
 				if ruleset == "4E" then
-					return DB.getValue(item, "class", "") == "Scroll" or DB.getValue(item, "subclass", "") == "Scroll";
+					return DB.getValue(item, "class", "") == "Scroll"
+						or DB.getValue(item, "subclass", "") == "Scroll"
+						or DB.getValue(item, "class", "") == "Magic Scroll"
+						or DB.getValue(item, "subclass", "") == "Magic Scroll"
+						or DB.getValue(item, "class", "") == "Arcane Scroll"
+						or DB.getValue(item, "subclass", "") == "Arcane Scroll"
+					;
 				end
 
-				return DB.getValue(item, "type", "") == "Scroll" or DB.getValue(item, "subtype", "") == "Scroll";
+				return DB.getValue(item, "type", "") == "Scroll"
+					or DB.getValue(item, "subtype", "") == "Scroll"
+					or DB.getValue(item, "type", "") == "Magic Scroll"
+					or DB.getValue(item, "subtype", "") == "Magic Scroll"
+					or DB.getValue(item, "type", "") == "Arcane Scroll"
+					or DB.getValue(item, "subtype", "") == "Arcane Scroll"
+				;
 			end },
 		[9] = {
 			sLabelRes = "filteropt_ritual",
@@ -215,20 +227,27 @@ function isValuable(nodeItem)
 	if not tValueTypes[1] then setValueTypes() end
 	local bValue = false;
 	for _,sValueType in ipairs(tValueTypes) do
-		if not bValue then bValue = (string.match(sTypeLower, '^'..sValueType)) end
-		if not bValue then bValue = (string.match(sSubtypeLower, '^'..sValueType)) end
+		for _,sValueTypeSplit in ipairs(StringManager.split(sValueType, ',;/)(', true)) do
+			if not bValue then bValue = (string.match(sTypeLower, '^'..sValueTypeSplit)) end
+			if not bValue then bValue = (string.match(sSubtypeLower, '^'..sValueTypeSplit)) end
+		end
 	end
 
 	return bValue;
 end
 
 function setValueTypes()
+	--from 5E
 	table.insert(tValueTypes, 'trade good');
 	table.insert(tValueTypes, 'trade bar');
-	table.insert(tValueTypes, 'gemstone');
+	table.insert(tValueTypes, 'gem'); --gemstone is for 5e, gem and gems for PF1
 	table.insert(tValueTypes, 'jewelry');
 	table.insert(tValueTypes, 'art object');
-	table.insert(tValueTypes, 'artwork');
+	--from PF1
+	table.insert(tValueTypes, 'valuable');
+	table.insert(tValueTypes, 'wealth');
+	table.insert(tValueTypes, 'currency');
+	table.insert(tValueTypes, 'commodity');
 end
 
 function findFilterOption(sLabelRes, sLabelValue, sOptKey)
