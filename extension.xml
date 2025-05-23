@@ -4,7 +4,7 @@
 	attribution and copyright information.
 -->
 <root>
-	<announcement font="emotefont" icon="WP_tiny" text="Winnowing Pursuits ~v2.7.4-dev~"/>
+	<announcement font="emotefont" icon="WP_tiny" text="Winnowing Pursuits ~v2.7.5-dev~"/>
 	<properties>
 		<name>Feature: Winnowing Pursuits</name>
 		<version>~v-dev~</version>
@@ -24,6 +24,9 @@
 		</ruleset>
 		<ruleset>
 			<name>PFRPG2</name>
+		</ruleset>
+		<ruleset>
+			<name>PFRPG2-Legacy</name>
 		</ruleset>
 		<!-- FloatingTabs (50) compatibility -->
 		<!-- Friend Zone (150) compatibility -->

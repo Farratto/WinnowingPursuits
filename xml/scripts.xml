@@ -9,7 +9,7 @@
 
 	<!-- inventory -->
 	<includefile ruleset="3.5E|4E|PFRPG" source="campaign/record_char_inventory_search.xml"/>
-	<includefile ruleset="PFRPG2" source="campaign/PFRPG2/record_char_inventory_search.xml"/>
+	<includefile ruleset="PFRPG2|PFRPG2-Legacy" source="campaign/PFRPG2/record_char_inventory_search.xml"/>
 	<includefile ruleset="5E" source="campaign/5E/record_char_inventory_search.xml"/>
 
 	<!-- logs -->
@@ -17,7 +17,7 @@
 
 	<!-- actions -->
 	<includefile ruleset="3.5E|PFRPG" source="campaign/record_char_actions.xml"/>
-	<includefile ruleset="PFRPG2" source="campaign/PFRPG2/record_char_actions.xml"/>
+	<includefile ruleset="PFRPG2|PFRPG2-Legacy" source="campaign/PFRPG2/record_char_actions.xml"/>
 	<includefile ruleset="4E" source="campaign/4E/record_char_actions.xml"/>
 	<includefile ruleset="5E" source="campaign/5E/record_char_actions.xml"/>
 

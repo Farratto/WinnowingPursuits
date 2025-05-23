@@ -40,7 +40,7 @@
 		</subwindow>
 	</template>
 
-	<windowclass name="sub_ct_header_host" merge="join" ruleset="PFRPG2" >
+	<windowclass name="sub_ct_header_host" merge="join" ruleset="PFRPG2|PFRPG2-Legacy" >
 		<script file="ct/scripts/ct_host_WP.lua"/>
 		<sheetdata>
 			<spacer_ct_header_right name="spacer_buttons_header_add">

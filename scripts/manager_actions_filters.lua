@@ -99,7 +99,8 @@ function getFilterOptions(nodeChar)
 				--	return false;
 				--end
 
-				if ruleset == "PFRPG2" then
+				--if ruleset == "PFRPG2" then
+				if string.match(ruleset, "^PFRPG2") then
 					return DB.getValue(item, "traits", ""):lower():find("concentrate") ~= nil;
 				end
 
@@ -116,7 +117,8 @@ function getFilterOptions(nodeChar)
 					return false;
 				end
 
-				if ruleset == "PFRPG2" then
+				--if ruleset == "PFRPG2" then
+				if string.match(ruleset, "^PFRPG2") then
 					return DB.getValue(item, "traits", ""):lower():find("concentrate") == nil;
 				end
 
@@ -168,7 +170,8 @@ function getFilterOptions(nodeChar)
 		});
 	end
 
-	if ruleset ~= "PFRPG2" and OptionsManager.isOption(SCHOOL_FILTER_OPTION, "on") then
+	--if ruleset ~= "PFRPG2" and OptionsManager.isOption(SCHOOL_FILTER_OPTION, "on") then
+	if not string.match(ruleset, "^PFRPG2") and OptionsManager.isOption(SCHOOL_FILTER_OPTION, "on") then
 		for _, sSchool in ipairs(getSchools(nodeChar)) do
 			local sLabel;
 
@@ -181,7 +184,8 @@ function getFilterOptions(nodeChar)
 			table.insert(aFilterOptions, {
 				sLabel = sLabel,
 				fFilter = function(item)
-					if ruleset == "PFRPG2" then
+					--if ruleset == "PFRPG2" then
+					if string.match(ruleset, "^PFRPG2") then
 						return DB.getValue(item, "traits", ""):lower():find(sSchool:lower());
 					end
 
@@ -235,7 +239,8 @@ function getSchoolsNested(nodeChar, sRuleset)
 			for _, nodeSpell in pairs(DB.getChildren(nodeLevel, "spells")) do
 				local sSchool;
 
-				if sRuleset == "PFRPG2" then
+				--if sRuleset == "PFRPG2" then
+				if string.match(sRuleset, "^PFRPG2") then
 					sSchool = DB.getValue(nodeSpell, "traits", "");
 				else
 					sSchool = DB.getValue(nodeSpell, "school", "");

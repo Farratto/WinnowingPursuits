@@ -22,7 +22,7 @@ Rulesets supported:
 * Dungeons and Dragons 4th Edition
 * Dungeons and Dragons 5th Edition
 * Pathfinder Roleplaying Game
-* Pathfinder 2nd Edition
+* Pathfinder 2nd Edition and Pathfinder 2nd Edition Legacy
 
 Extensions supported:
 * Pets
@@ -45,6 +45,7 @@ SmiteWorks owns rights to code sections copied from their rulesets by permission
 
 ### Change Log
 
+* v2.7.5: Support added for PFRPG2-legacy ruleset
 * v2.7.4: Loosened some of the filter rules to accomodate Pathfinder 1 a bit better
 * v2.7.3: FIXED: not recognizing groups with class names in them as spells in 5E ruleset
 * v2.7.2: FIXED: nil error on PFRGP/3.5E. FIXED: action filter not reporting correctly. Improved behavior when locking/unlocking character sheet.
