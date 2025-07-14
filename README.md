@@ -45,6 +45,7 @@ SmiteWorks owns rights to code sections copied from their rulesets by permission
 
 ### Change Log
 
+* v2.7.6: Compatibility update for FG v4.8.0
 * v2.7.5: Support added for PFRPG2-legacy ruleset
 * v2.7.4: Loosened some of the filter rules to accomodate Pathfinder 1 a bit better
 * v2.7.3: FIXED: not recognizing groups with class names in them as spells in 5E ruleset

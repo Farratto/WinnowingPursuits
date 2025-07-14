@@ -28,10 +28,12 @@
 
 	<template name="filtercombo">
 		<comboboxc>
+			<anchored mergerule="join"><height mergerule="delete"></height></anchored>
 			<empty>
 				<textres>filter</textres>
 			</empty>
 			<tooltip textres="tooltip_filter"/>
+			<listdirection mergerule="replace">up</listdirection>
 			<unsorted/>
 		</comboboxc>
 	</template>

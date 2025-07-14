@@ -95,16 +95,6 @@ function applySearchAndFilter()
 		--vWindow.updateUses();
 		vWindow.updatePowerGroups();
 
-		--native FGU
---[[
-		if #tSwapped > 0 then
-			for _,win in ipairs(tSwapped) do
-				vWindow.powers.onHeaderToggle(win);
-			end
-			tSwapped = {};
-		end
-		local tGroups = {};
-]]
 		for _, vPowerPage in pairs(vWindow.powers.getWindows()) do
 			if vPowerPage.getClass() ~= "power_group_header" and vPowerPage.getFilter() == true then
 				nodeSpell = vPowerPage.getDatabaseNode();
@@ -114,28 +104,9 @@ function applySearchAndFilter()
 
 				if not (bMatchesFilter and bMatchesSearch) then
 					vPowerPage.setFilter(false);
-				--else
-				--	table.insert(tGroups, DB.getValue(nodeSpell, 'group', ''));
 				end
 			end
 		end
---[[
-		for _,winPower in pairs(vWindow.powers.getWindows()) do
-			if winPower.getClass() == "power_group_header" then
-				local bFound;
-				for k,sGroup in ipairs(tGroups) do
-					if not bFound and sGroup == winPower.name.getValue()
-						--and winPower.name.getFont() ~= "subwindowsmalltitle"
-					then
-						vWindow.powers.onHeaderToggle(winPower,true);
-						table.insert(tSwapped, winPower);
-						bFound = true;
-						table.remove(tGroups, k)
-					end
-				end
-			end
-		end
-]]
 		vWindow.powers.applyFilter();
 
 		local searchInput = StringManager.trim(actions_search_input.getValue()):lower();
