@@ -189,25 +189,25 @@ function applySearchAndFilter()
 		end
 
 		if fFilter or searchInput ~= '' then
-			if vWin.spellslots_cast.subwindow.spellslots_label then
+			if vWin.spellslots_cast and vWin.spellslots_cast.subwindow.spellslots_label then
 				vWin.spellslots_cast.subwindow.spellslots_label.setVisible(false);
 			end
-			if vWin.spellslots_cast.subwindow.spellslots then
+			if vWin.spellslots_cast and vWin.spellslots_cast.subwindow.spellslots then
 				vWin.spellslots_cast.subwindow.spellslots.setVisible(false);
 			end
-			if vWin.spellslots_cast.subwindow.pactmagicslots_label then
+			if vWin.spellslots_cast and vWin.spellslots_cast.subwindow.pactmagicslots_label then
 				vWin.spellslots_cast.subwindow.pactmagicslots_label.setVisible(false);
 			end
-			if vWin.spellslots_cast.subwindow.pactmagicslots then
+			if vWin.spellslots_cast and vWin.spellslots_cast.subwindow.pactmagicslots then
 				vWin.spellslots_cast.subwindow.pactmagicslots.setVisible(false);
 			end
-			if vWin.spellslots_prep.subwindow.slotstitle then
+			if vWin.spellslots_prep and vWin.spellslots_prep.subwindow.slotstitle then
 				for _,control in pairs(vWin.spellslots_prep.subwindow.getControls()) do
 					if control.getName() ~= 'slotstitle' then control.setVisible(false) end
 				end
 			end
 		else
-			if vWin.spellslots_cast.subwindow.slotstitle and
+			if vWin.spellslots_cast and vWin.spellslots_cast.subwindow.slotstitle and
 				vWin.spellslots_cast.subwindow.slotstitle.getFont() == 'subwindowsmalltitle'
 			then
 				vWin.spellslots_cast.subwindow.onModeChanged();
@@ -423,12 +423,12 @@ function onSearchClear()
 		end
 	end
 
-	if vWin and vWin.spellslots_cast.subwindow.slotstitle and
+	if vWin and vWin.spellslots_cast and vWin.spellslots_cast.subwindow.slotstitle and
 		vWin.spellslots_cast.subwindow.slotstitle.getFont() == 'subwindowsmalltitle'
 	then
 		vWin.spellslots_cast.subwindow.onModeChanged();
 	end
-	if vWin and vWin.spellslots_prep.subwindow.slotstitle and
+	if vWin and vWin.spellslots_prep and vWin.spellslots_prep.subwindow.slotstitle and
 		vWin.spellslots_prep.subwindow.slotstitle.getFont() == 'subwindowsmalltitle'
 	then
 		for _,control in pairs(vWin.spellslots_prep.subwindow.getControls()) do

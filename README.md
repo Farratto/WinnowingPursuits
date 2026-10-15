@@ -45,6 +45,7 @@ SmiteWorks owns rights to code sections copied from their rulesets by permission
 
 ### Change Log
 
+* v2.7.7: FIXED: 5e ruleset UI changes broke extension. Added protections for future ruleset changes to effects.
 * v2.7.6: Compatibility update for FG v4.8.0
 * v2.7.5: Support added for PFRPG2-legacy ruleset
 * v2.7.4: Loosened some of the filter rules to accomodate Pathfinder 1 a bit better

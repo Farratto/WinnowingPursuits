@@ -4,6 +4,7 @@
 -- luacheck: globals onSearchClear ct_search_input onSearchEnter ct_search_clear_btn onFilterWP fonFilter
 -- luacheck: globals onNewCombatant createControl
 
+local sCTPath;
 fonFilter = '';
 
 function onInit()
@@ -20,13 +21,14 @@ function onInit()
 
 	fonFilter = parentcontrol.window.list.onFilter;
 	parentcontrol.window.list.onFilter = onFilterWP;
-	DB.addHandler("combattracker.list", "onChildAdded", onNewCombatant);
+	sCTPath = CombatManager.getTrackerPath();
+	DB.addHandler(sCTPath, "onChildAdded", onNewCombatant);
 end
 
 function onClose()
 	if super and super.onClose then super.onClose() end
 
-	DB.removeHandler("combattracker.list", "onChildAdded", onNewCombatant);
+	DB.removeHandler(sCTPath, "onChildAdded", onNewCombatant);
 end
 
 function onFilterWP(w)

@@ -37,6 +37,7 @@
 		</sheetdata>
 	</windowclass>
 
+<!--
 	<windowclass name="power_slots_cast" merge="join">
 		<script>
 			function onModeChanged()
@@ -72,6 +73,7 @@
 			end
 		</script>
 	</windowclass>
+-->
 
 	<!-- FloatingTabs compatibility -->
 	<windowclass name="charsheet_actionsft" merge="join">
